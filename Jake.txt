@@ -1,0 +1,6 @@
+10/1/2024
+I am backend developer, i will be working with the javascript index file to create to various forms and other things requiring js.
+worked on getting the git repo set up as well as creating a new branch for myself and merging it with the main branch.
+The biggest challenge of today was generally figuring out github as it can be very confusing.
+My goals for the project are to create the functioning system for any forms or other js things that need to be created.
+Tomorrow I will begin creating the sign-up/log-in form.

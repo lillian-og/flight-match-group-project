@@ -1,0 +1,5 @@
+1. My role is the database specialist.
+2. I am resposible for the JSON files and user data management.
+3. I worked on setting up our team's github and the project's framework.
+4. The biggest problem today was setting up all of our team member's branches.
+5. I will work on creating a flight manifest and flight id numbers.
