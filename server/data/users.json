@@ -1,7 +1,8 @@
 [
   {
-    "name": "john",
-    "email": "john@gmail.com",
+    "name": "joe",
+    "email": "joe@gmail.com",
+    "password": "joe123",
     "messages": [
       "plane"
     ]
