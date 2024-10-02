@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "name": "john",
+    "email": "john@gmail.com",
+    "messages": [
+      "plane"
+    ]
+  }
+]
