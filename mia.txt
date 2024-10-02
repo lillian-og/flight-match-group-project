@@ -1,1 +1,9 @@
-Random Textgitg
+10/1/24 Journal 
+My role is to be a Design specialist but also research and jump around.
+ My responsiblities are to research about the company
+and create an about me page with maya.
+ I worked on getting my repo and making sure everything was up to date as well as know my
+role in this project.
+The biggest challenge was figuring out what everyone roles were gonna be and how to get all of us to be able to merge in the main branch.
+My goal is to be able to communicate with my teammates and learn to work with each other.
+I will work on the framework for the About me page as well as research with maya hopefully.
