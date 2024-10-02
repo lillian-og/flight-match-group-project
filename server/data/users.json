@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "joe",
+    "email": "joe@gmail.com",
+    "password": "joe123",
+    "messages": [
+      "plane"
+    ]
+  }
+]
