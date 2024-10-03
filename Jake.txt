@@ -4,3 +4,8 @@ worked on getting the git repo set up as well as creating a new branch for mysel
 The biggest challenge of today was generally figuring out github as it can be very confusing.
 My goals for the project are to create the functioning system for any forms or other js things that need to be created.
 Tomorrow I will begin creating the sign-up/log-in form.
+
+10/2/2024
+A challenge that arose was that i had to change all the value names as well as adding a password to the sign up and user management.
+I mainly use w3schools to answer any questions I have as well as asking my teammates for advice.
+Using git helps us see our teams changes as well as make corrections or other edits to the code, also just talking.
