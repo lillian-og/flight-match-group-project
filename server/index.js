@@ -47,6 +47,11 @@ app.get('/user-management', (req, res) => {
     res.sendFile('pages/user-management.html', { root: serverPublic });
 });
 
+app.get('/log-in', (req, res) => {
+    res.sendFile('pages/log-in.html', { root: serverPublic });
+});
+
+
 // Form submission route
 app.post('/submit-form', async (req, res) => {
     try {
