@@ -2,6 +2,14 @@ My of this project is front end. Im going to work on the CSS and HTML
 while also checking if everything is working right.
 We worked talking over our parts, what we are better and not the good at. We also created our github branch for the project,
 we made sure we were all in the same branch and got everyone up to speed.
+10/1/24
 The biggest challenge today was making sure I was in the right branch with no errors.
 My goal for tommorrow is to get started on the About Me page but about our commpany with Mia.
 Tommor we will talk about what should be needed in the page and how we should set it up.
+
+10/2/24
+
+A challenge that happened today was trying to figure out how we wanted the about me 
+page to look and how we wanted to set it up. Another issue was trying to get our file to share 
+with each other to work on the page together. My resource is ChatGPT ive been using it to get ideas on what 
+to do/ add. I want to talk for get get more ideas for anything that might come up.
