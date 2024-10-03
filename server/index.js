@@ -39,14 +39,14 @@ app.get('/users', async (req, res) => {
 });
 
 // Form route
-app.get('/form', (req, res) => {
-    res.sendFile('pages/form.html', { root: serverPublic });
+app.get('/sign-up', (req, res) => {
+    res.sendFile('pages/sign-up.html', { root: serverPublic });
 });
 
 // Form submission route
 app.post('/submit-form', async (req, res) => {
     try {
-        const { name, email, message } = req.body;
+        const { name, email, password, message } = req.body;
 
         // Read existing users from file
         let users = [];
@@ -64,13 +64,13 @@ app.post('/submit-form', async (req, res) => {
         if (user) {
             user.messages.push(message);
         } else {
-            user = { name, email, messages: [message] };
+            user = { name, email, password, messages: [message] };
             users.push(user);
         }
 
         // Save updated users
         await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
-        res.redirect('/form');
+        res.redirect('/sign-up');
     } catch (error) {
         console.error('Error processing form:', error);
         res.status(500).send('An error occurred while processing your submission.');
@@ -78,22 +78,23 @@ app.post('/submit-form', async (req, res) => {
 });
 
 // Update user route (currently just logs and sends a response)
-app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
+app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
     try {
-        const { currentName, currentEmail } = req.params;
-        const { newName, newEmail } = req.body;
+        const { currentName, currentEmail, currentPassword } = req.params;
+        const { newName, newEmail, newPassword } = req.body;
         console.log('Current user:', { currentName });
         console.log('Current email:', { currentEmail });
-        console.log('New user data:', { newName, newEmail });
+        console.log('Current email:', { currentPassword });
+        console.log('New user data:', { newName, newEmail, newPassword });
         const data = await fs.readFile(dataPath, 'utf8');
         if (data) {
             let users = JSON.parse(data);
-            const userIndex = users.findIndex(user => user.name === currentName && user.email === currentEmail);
+            const userIndex = users.findIndex(user => user.name === currentName && user.email === currentEmail && user.password == currentPassword);
             console.log(userIndex);
             if (userIndex === -1) {
                 return res.status(404).json({ message: "User not found" })
             }
-            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail };
+            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail, password: newPassword };
             console.log(users);
             await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
 
