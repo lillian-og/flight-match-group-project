@@ -17,3 +17,17 @@ trip advisor and the bootstrap website.
 
 -1 source youre using to collaborate w your teammates? 
 github.
+
+10-3-2024
+
+1. Do you believe youre giving your best effort to the team? 
+- Yes, we've had a lot of git problems so it's been hard to get started but I feel like I'm finally getting in a good groove of things
+
+2. what is one way you hope to improve your site by the end of the week?
+- I hope to have all 3 pages connected and looking decently presentable by the end of tomorrow.
+
+3. what is one technical problem holding you back?
+- git is really confusing sometimes and pushing and pulling has problems sometimes with everyones code. 
+
+4. what is one way you can help support your team moving forward?
+- I feel like asking what everyone is working on and maybe giving more live feedback during the workday would help.
