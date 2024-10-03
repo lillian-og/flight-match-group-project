@@ -42,6 +42,7 @@ app.get('/users', async (req, res) => {
 app.get('/sign-up', (req, res) => {
     res.sendFile('pages/sign-up.html', { root: serverPublic });
 });
+
 app.get('/user-management', (req, res) => {
     res.sendFile('pages/user-management.html', { root: serverPublic });
 });
@@ -92,7 +93,7 @@ app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, 
         const data = await fs.readFile(dataPath, 'utf8');
         if (data) {
             let users = JSON.parse(data);
-            const userIndex = users.findIndex(user => user.name === currentName && user.email === currentEmail && user.password === currentPassword);
+            const userIndex = users.findIndex(user => user.name === currentName && user.email === currentEmail && user.password == currentPassword);
             console.log(userIndex);
             if (userIndex === -1) {
                 return res.status(404).json({ message: "User not found" })
