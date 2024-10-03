@@ -13,3 +13,10 @@ A challenge that happened today was trying to figure out how we wanted the about
 page to look and how we wanted to set it up. Another issue was trying to get our file to share 
 with each other to work on the page together. My resource is ChatGPT ive been using it to get ideas on what 
 to do/ add. I want to talk for get get more ideas for anything that might come up.
+
+10/3/24
+
+Yes i do belive i am giving my best effort to the project. I want to get the images into the about us page
+and make it look kinda nice then start decorating everything else. One technical change would be transformig everything
+in canvas to the About Me page. I can support by giving more information and giving ideas to do some animations that 
+might look good in the site.
