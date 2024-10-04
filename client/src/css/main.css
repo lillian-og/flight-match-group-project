@@ -5,3 +5,29 @@ body {
 #where {
     text-align: center;
 }
+
+.places-to-go {
+    display: flex;
+    justify-content: space-between;
+    /* margin-left: 7vw; */
+    /* width: 450px; */
+    margin: auto;
+    /* height: 175px; */
+    border: solid red;
+}
+
+.pictures {
+    height: 175px;
+    width: 250px;
+    border: solid magenta;   
+}
+
+.picture-wrapper {
+    text-align: center;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
