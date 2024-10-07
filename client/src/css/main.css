@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(158, 211, 252);
+    background-color: #63B0D0;
 }
 
 #where {
@@ -13,13 +13,13 @@ body {
     /* width: 450px; */
     margin: auto;
     /* height: 175px; */
-    border: solid red;
+    border: #FCEAD2 ;
 }
 
 .pictures {
     height: 175px;
     width: 250px;
-    border: solid magenta;   
+    border: 10px solid rgb(249, 227, 186);   
 }
 
 .picture-wrapper {
