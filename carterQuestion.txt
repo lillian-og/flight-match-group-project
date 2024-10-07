@@ -6,12 +6,12 @@
 5. I will work on creating a flight manifest and flight id numbers.
 
 10/02/24
-A challenge that arose was the large amount of code that I would have to edit in the database.
-I just look up any questions I and click through all the link until one helps me.
-Our team uses git to work on our individual pieces without breaking the code.
+1. A challenge that arose was the large amount of code that I would have to edit in the database.
+2. I just look up any questions I and click through all the link until one helps me.
+3. Our team uses git to work on our individual pieces without breaking the code.
 
 10/03/24
-I believe I am doing great and making a lot of progress on the database.
-I can improve by finding ways to make my code more efficient.
-My biggest challenge right now is the repetitivness of the tasks I do.
-I can support my team by communicating and helping when needed more.
+1. I believe I am doing great and making a lot of progress on the database.
+2. I can improve by finding ways to make my code more efficient.
+3. My biggest challenge right now is the repetitivness of the tasks I do.
+4. I can support my team by communicating and helping when needed more.
