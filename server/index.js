@@ -43,6 +43,10 @@ app.get('/sign-up', (req, res) => {
     res.sendFile('pages/sign-up.html', { root: serverPublic });
 });
 
+app.get('/search-test', (req, res) => {
+    res.sendFile('pages/search-test.html', { root: serverPublic });
+});
+
 app.get('/user-management', (req, res) => {
     res.sendFile('pages/user-management.html', { root: serverPublic });
 });

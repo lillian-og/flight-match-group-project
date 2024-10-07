@@ -15,3 +15,13 @@
 2. I can improve by finding ways to make my code more efficient.
 3. My biggest challenge right now is the repetitivness of the tasks I do.
 4. I can support my team by communicating and helping when needed more.
+
+Fetch and Await Video
+1. You have to await the response to the url and the promise to resolve.
+2. The difference between json.parse and response.json is that json.parse is a synchronous and response.json is asynchronous.
+3. The fetch is resolved once you get the initial headers back and the body is received after because it could take a long time.
+
+CSS Clamp Video
+1. Fluid typography allows text to change size based on the screen size and assigned boundries.
+2. The clamp function takes a minimum size, a prefered size, and a maximum size
+3. The clamp function reduced the amount of verbose code used.

@@ -62,4 +62,4 @@ async function getFrom(city, state) {
     var distance = turf.distance(from, to, options)
     console.log(distance + " miles")
   }
-  calculateMiles("avonale", "az", "lincoln", "nebraska")
+calculateMiles("avonale", "az", "lincoln", "nebraska");

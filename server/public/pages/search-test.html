@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://icons.iconarchive.com/icons/icons8/ios7/256/Transport-Airplane-Take-Off-icon.png"
+    />
+    <title>Search-Test</title>
+  </head>
+  <body>
+    <div class="container patua-one-regular">
+      <h1>Log-in</h1>
+      <form action="/submit-locations" method="POST">
+        <label for="from-city">From City:</label>
+        <input type="text" id="from-city" name="from-city" required /><br /><br />
+        <label for="from-state">From State:</label>
+        <input type="text" id="from-state" name="from-state" required /><br /><br />
+        <label for="to-city">To City:</label>
+        <input type="text" id="to-city" name="to-city" required /><br /><br />
+        <label for="to-state">To State:</label>
+        <input type="text" id="to-state" name="to-state" required /><br /><br />
+        <input type = "submit" name="locations-submit" id="locations-submit">
+      </form>
+    
+    <script>
+        app.post('/submit-locations', async (req, res) => {
+    try {
+        const { fromCity, fromState, toCity, toState} = req.body;
+         const newDiv = document.createElement("div");
+
+  // and give it some content
+  const newContent = document.createTextNode(fromCity+fromState,toCity,toState);
+
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
+    } catch (error) {
+        console.error('Error processing form:', error);
+        res.status(500).send('An error occurred while processing your submission.');
+    }
+});
+
+
+
+
+
+
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fromCity = document.getElementById("currentName").value;
+          const fromState = document.getElementById("currentEmail").value;
+          const currentPassword =
+            document.getElementById("currentPassword").value;
+          const newName = document.getElementById("newName").value;
+          const newEmail = document.getElementById("newEmail").value;
+          const newPassword = document.getElementById("newPassword").value;
+
+          try {
+            const response = await fetch(
+              `/update-user/${currentName}/${currentEmail}/${currentPassword}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ newName, newEmail, newPassword }),
+              }
+            );
+            const data = await response.json();
+            console.log(data);
+            renderUsers();
+            // alert("Message is: " + data.message);
+          } catch (error) {
+            alert("Error updating user: " + error.message);
+          }
+        });
+      document
+        .getElementById("delete-user")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("delete-name").value;
+          try {
+            const response = await fetch(`/user/${name}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Error with network");
+            }
+            const data = await response.text();
+            console.log(data);
+            renderUsers();
+          } catch (error) {
+            console.error("something went wrong" + error.message);
+          }
+        });
+      async function fetchUsers() {
+        try {
+          const response = await fetch("/users");
+          if (!response.ok) {
+            throw new Error("Error fetching users. Response not ok");
+          }
+          // there could be an error getting response/fetching the endpoint
+          console.log(response);
+          const users = await response.json();
+          // there could be an error parsing the response
+          // console.log(users);
+          return users;
+        } catch (error) {
+          console.error("There was a problem");
+          console.error(error);
+        }
+      }
+
+      async function renderUsers() {
+        const tableBody = document.getElementById("userTableBody");
+        tableBody.innerHTML = "";
+        try {
+          const users = await fetchUsers();
+          if (Array.isArray(users) && users.length > 0) {
+            users.forEach((user) => {
+              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
+              tableBody.innerHTML += row;
+            });
+          }
+        } catch (error) {}
+      }
+      document.addEventListener("DOMContentLoaded", renderUsers);
+    </script>
+  </body>
+</html>
