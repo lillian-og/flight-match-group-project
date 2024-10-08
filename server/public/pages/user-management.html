@@ -16,51 +16,119 @@
     />
     <title>Sign-Up</title>
     <style>
-      .patua-one-regular {
-        font-family: "Patua One", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-      body,
-      html {
+            .patua-one-regular {
+              font-family: "Patua One", serif;
+              font-weight: 400;
+              font-style: normal;
+            }
+            body,
+            html {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            body {
+              height: 100vh;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-image: linear-gradient(
+                to bottom right,
+                #63b0d0,
+                #004968,
+                #a85a2a,
+                #e7925d
+              );
+            }
+            div.container {
+              background-color: #fcead2;
+              padding: 70px;
+              margin: 20px;
+              justify-content: center;
+              align-items: center;
+              /* border: 1px solid black; */
+              border-radius: 50px;
+              box-shadow: 10px 7px 15px black;
+              /* height: 50vh; */
+            }
+            form {
+              justify-content: center;
+              align-items: center;
+            }
+            input {
+              float: right;
+            }
+            nav {
+        padding: 10px 30px;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: space-between;
+        background-color: #FCEAD2;
+        position: relative;
+        height: 60px;
       }
-      body {
-        height: 100vh;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-image: linear-gradient(
-          to bottom right,
-          #63b0d0,
-          #004968,
-          #a85a2a,
-          #e7925d
-        );
+      /* Makes links go horizontal and spaces it out */
+      nav ul {
+        display: flex;
+        gap: 35px;
       }
-      div.container {
-        background-color: #fcead2;
-        padding: 70px;
-        margin: 20px;
-        justify-content: center;
-        align-items: center;
-        /* border: 1px solid black; */
-        border-radius: 50px;
-        box-shadow: 10px 7px 15px black;
-        /* height: 50vh; */
+      nav ul li {
+        list-style-type: none;
       }
-      form {
-        justify-content: center;
-        align-items: center;
+      nav ul li a {
+        text-decoration: none;
+        color: black;
       }
-      input {
-        float: right;
+      .menu-icon {
+        display: none;
       }
+      .menu-icon i {
+        color: white;
+        font-size: 25px;
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          text-align: center;
+          background: #004968;
+          /*     Puts it close together */
+          gap: 0;
+          overflow: hidden;
+        }
+        nav ul li {
+          padding: 10px;
+        }
+        .menu-icon {
+          display: block;
+          cursor: pointer;
+        }
+      }
+      nav ul li a:hover {
+        color
     </style>
   </head>
   <body>
     <div class="container patua-one-regular">
+      <nav>
+        <div class="logo">
+          <img
+            src="/Airplane-About/flight-pics/flightmatch.png"
+            alt="plane"
+            width="100px"
+            height="100px"
+          />
+        </div>
+        <ul id="menuList">
+          <li><a href="/">Home</a></li>
+          <li><a href="">About</a></li>
+        </ul>
+        <div class="menu-icon">
+          <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+      </nav>
       <h1>Update User</h1>
       <form id="updateForm">
         <label for="currentName">Current name:</label>
