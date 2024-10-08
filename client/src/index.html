@@ -8,17 +8,29 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 </style>
-
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
   </head>
   <body>
 
     <nav>
+  <div class="logo" >
+    <img id="logo-picture" src="pictures/flightmatch.png" alt="" width="100px" height="100px">
+  </div>
+    <ul id="menuList">
+    <li><a href="">Home</a></li>
+    <li><a href="/About-Us">About</a></li>
+    <li><a href="/sign-up"><button>LogIn/Signup</button></a></li>
+  </ul>
+  <div class="menu-icon">
+<i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</nav>
+
+    <!-- <nav>
        <h1 class="bebas-neue-regular">Flight match</h1>
     <a class="bebas-neue-regular" href="/sign-up"><button>Go to Form</button> </a>
-      </nav>
+      </nav> -->
 
       <h1 class="bebas-neue-regular" id="where"> Where to ?</h1>
 

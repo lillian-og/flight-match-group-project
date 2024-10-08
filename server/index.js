@@ -51,6 +51,11 @@ app.get('/log-in', (req, res) => {
     res.sendFile('pages/log-in.html', { root: serverPublic });
 });
 
+app.get('/About-Us', (req, res) => {
+    res.sendFile('Airplane-About/About-Us.html', { root: clientPath });
+    res.sendFile('Airplane-About/about.css', { root: clientPath });
+});
+
 
 // Form submission route
 app.post('/submit-form', async (req, res) => {
