@@ -63,3 +63,16 @@ async function getFrom(city, state) {
     console.log(distance + " miles")
   }
 calculateMiles("avonale", "az", "lincoln", "nebraska");
+// app.get('/submitLocations/:fromCity/:fromState/:toCity/:toState', async (req, res) => {
+//   try {
+//       const { fromCity, fromState, toCity, toState } = req.params;
+//       const data = await fs.readFile(dataPath, 'utf8');
+//       if (data) {
+//           let flightData = JSON.parse(data);
+//           console.log(flightData)
+//       }
+//   } catch (error) {
+//       console.error('Error updating user:', error);
+//       res.status(500).send('An error occurred while updating the user.');
+//   }
+// });

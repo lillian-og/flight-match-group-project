@@ -10,6 +10,7 @@ const app = express();
 // Define paths
 const clientPath = path.join(__dirname, '..', 'client/src');
 const dataPath = path.join(__dirname, 'data', 'users.json');
+const flightDataPath = path.join(__dirname, 'data', 'flights.json');
 const serverPublic = path.join(__dirname, 'public');
 // Middleware setup
 app.use(express.static(clientPath)); // Serve static files from client directory
@@ -118,6 +119,176 @@ app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, 
         res.status(500).send('An error occurred while updating the user.');
     }
 });
+
+app.get('/submitLocations/:fromCity/:fromState/:toState', async (req, res) => {
+    try {
+        const { fromCity, fromState, toCity, toState } = req.params;
+        const data = await fs.readFile(flightDataPath, 'utf8');
+        if (data) {
+            function getIndex(state){
+                if(state == "alabama" || state == "al"){
+                    return 0
+                }
+                if(state == "alaska" || state == "ak"){
+                    return 1
+                }
+                if(state == "arizona" || state == "az"){
+                    return 2
+                }
+                if(state == "arkansas" || state == "ar"){
+                    return 3
+                }
+                if(state == "california" || state == "ca"){
+                    return 4
+                }
+                if(state == "colorado" || state == "co"){
+                    return 5
+                }
+                if(state == "connecticut" || state == "ct"){
+                    return 6
+                }
+                if(state == "delaware" || state == "de"){
+                    return 7
+                }
+                if(state == "florida" || state == "fl"){
+                    return 8
+                }
+                if(state == "georgia" || state == "ga"){
+                    return 9
+                }
+                if(state == "hawaii" || state == "hi"){
+                    return 10
+                }
+                if(state == "idaho" || state == "id"){
+                    return 11
+                }
+                if(state == "illinois" || state == "il"){
+                    return 12
+                }
+                if(state == "indiana" || state == "in"){
+                    return 13
+                }
+                if(state == "iowa" || state == "ia"){
+                    return 14
+                }
+                if(state == "kansas" || state == "ks"){
+                    return 15
+                }
+                if(state == "kentucky" || state == "ky"){
+                    return 16
+                }
+                if(state == "louisiana" || state == "la"){
+                    return 17
+                }
+                if(state == "maine" || state == "me"){
+                    return 18
+                }
+                if(state == "maryland" || state == "az"){
+                    return 19
+                }
+                if(state == "massachusetts" || state == "ma"){
+                    return 20
+                }
+                if(state == "michigan" || state == "mi"){
+                    return 21
+                }
+                if(state == "minnesota" || state == "mn"){
+                    return 22
+                }
+                if(state == "mississippi" || state == "ms"){
+                    return 23
+                }
+                if(state == "missouri" || state == "mo"){
+                    return 24
+                }
+                if(state == "montana" || state == "mt"){
+                    return 25
+                }
+                if(state == "nebraska" || state == "ne"){
+                    return 26
+                }
+                if(state == "nevada" || state == "nv"){
+                    return 27
+                }
+                if(state == "new hampshire" || state == "nh"){
+                    return 28
+                }
+                if(state == "new jersey" || state == "nj"){
+                    return 29
+                }
+                if(state == "new mexico" || state == "nm"){
+                    return 30
+                }
+                if(state == "new york" || state == "ny"){
+                    return 31
+                }
+                if(state == "north carolina" || state == "nc"){
+                    return 32
+                }
+                if(state == "north dakota" || state == "nd"){
+                    return 33
+                }
+                if(state == "ohio" || state == "oh"){
+                    return 34
+                }
+                if(state == "oklahoma" || state == "ok"){
+                    return 35
+                }
+                if(state == "oregon" || state == "or"){
+                    return 36
+                }
+                if(state == "pennsylvania" || state == "pa"){
+                    return 37
+                }
+                if(state == "rhode island" || state == "ri"){
+                    return 38
+                }
+                if(state == "south carolina" || state == "sc"){
+                    return 39
+                }
+                if(state == "south dakota" || state == "sd"){
+                    return 40
+                }
+                if(state == "tennessee" || state == "tn"){
+                    return 41
+                }
+                if(state == "texas" || state == "tx"){
+                    return 42
+                }
+                if(state == "utah" || state == "ut"){
+                    return 43
+                }
+                if(state == "vermont" || state == "vt"){
+                    return 44
+                }
+                if(state == "virginia" || state == "va"){
+                    return 45
+                }
+                if(state == "washington" || state == "wa"){
+                    return 46
+                }
+                if(state == "west virginia" || state == "wv"){
+                    return 47
+                }
+                if(state == "wisconsin" || state == "wi"){
+                    return 48
+                }
+                if(state == "wyoming" || state == "wy"){
+                    return 49
+                }
+            }
+            let fromIndex = getIndex(fromState)
+            let toIndex  = getIndex(toState)  
+            let flightData = JSON.parse(data);
+            let flightsAvail = flightData[fromIndex].toState[toIndex].toState
+            // console.log(flightsAvail)
+            res.status(200).json(flightsAvail);
+        }
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('An error occurred while updating the user.');
+    }
+  });
 
 app.delete('/user/:name', async (req, res) => {
     try {

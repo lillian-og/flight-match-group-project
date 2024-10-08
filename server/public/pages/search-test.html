@@ -15,130 +15,105 @@
       href="https://icons.iconarchive.com/icons/icons8/ios7/256/Transport-Airplane-Take-Off-icon.png"
     />
     <title>Search-Test</title>
+    <style>
+      .patua-one-regular {
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      body,
+      html {
+        display: flex;
+
+        align-items: center;
+      }
+      body {
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: linear-gradient(to bottom right, #63B0D0, #004968, #A85A2A, #E7925D);
+      }
+      div.container {
+        background-color: #FCEAD2;
+        padding: 70px;
+        margin: 20px;
+        align-items: center;
+        /* border: 1px solid black; */
+        border-radius: 50px;
+        box-shadow: 10px 7px 15px black;
+        /* height: 50vh; */
+      }
+      form {
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        float: right;
+      }
+      .flight-info-box{
+        background-color: #FCEAD2;
+        padding: 70px;
+        margin: 20px;
+        align-items: center;
+        /* border: 1px solid black; */
+        border-radius: 50px;
+        box-shadow: 10px 7px 15px black;
+        /* height: 50vh; */
+      }
+    </style>
   </head>
   <body>
     <div class="container patua-one-regular">
       <h1>Log-in</h1>
-      <form action="/submit-locations" method="POST">
+      <form id="submit-locations">
         <label for="from-city">From City:</label>
         <input type="text" id="from-city" name="from-city" required /><br /><br />
         <label for="from-state">From State:</label>
         <input type="text" id="from-state" name="from-state" required /><br /><br />
-        <label for="to-city">To City:</label>
-        <input type="text" id="to-city" name="to-city" required /><br /><br />
+        <!-- <label for="to-city">To City:</label>
+        <input type="text" id="to-city" name="to-city" required /><br /><br /> -->
         <label for="to-state">To State:</label>
         <input type="text" id="to-state" name="to-state" required /><br /><br />
         <input type = "submit" name="locations-submit" id="locations-submit">
       </form>
     
     <script>
-        app.post('/submit-locations', async (req, res) => {
-    try {
-        const { fromCity, fromState, toCity, toState} = req.body;
-         const newDiv = document.createElement("div");
-
-  // and give it some content
-  const newContent = document.createTextNode(fromCity+fromState,toCity,toState);
-
-  // add the text node to the newly created div
-  newDiv.appendChild(newContent);
-
-  // add the newly created element and its content into the DOM
-  const currentDiv = document.getElementById("div1");
-  document.body.insertBefore(newDiv, currentDiv);
-    } catch (error) {
-        console.error('Error processing form:', error);
-        res.status(500).send('An error occurred while processing your submission.');
-    }
-});
-
-
-
-
-
 
       document
-        .getElementById("updateForm")
+        .getElementById("submit-locations")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-          const fromCity = document.getElementById("currentName").value;
-          const fromState = document.getElementById("currentEmail").value;
-          const currentPassword =
-            document.getElementById("currentPassword").value;
-          const newName = document.getElementById("newName").value;
-          const newEmail = document.getElementById("newEmail").value;
-          const newPassword = document.getElementById("newPassword").value;
-
+          const fromCity = document.getElementById("from-city").value;
+          const fromState = document.getElementById("from-state").value;
+          // const toCity = document.getElementById("to-city").value;
+          const toState = document.getElementById("to-state").value;
           try {
-            const response = await fetch(
-              `/update-user/${currentName}/${currentEmail}/${currentPassword}`,
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ newName, newEmail, newPassword }),
-              }
-            );
+            const response = await fetch(`/submitLocations/${fromCity}/${fromState}/${toState}`);
             const data = await response.json();
-            console.log(data);
-            renderUsers();
-            // alert("Message is: " + data.message);
-          } catch (error) {
-            alert("Error updating user: " + error.message);
-          }
-        });
-      document
-        .getElementById("delete-user")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const name = document.getElementById("delete-name").value;
-          try {
-            const response = await fetch(`/user/${name}`, {
-              method: "DELETE",
-            });
-            if (!response.ok) {
-              throw new Error("Error with network");
-            }
-            const data = await response.text();
-            console.log(data);
-            renderUsers();
-          } catch (error) {
-            console.error("something went wrong" + error.message);
-          }
-        });
-      async function fetchUsers() {
-        try {
-          const response = await fetch("/users");
-          if (!response.ok) {
-            throw new Error("Error fetching users. Response not ok");
-          }
-          // there could be an error getting response/fetching the endpoint
-          console.log(response);
-          const users = await response.json();
-          // there could be an error parsing the response
-          // console.log(users);
-          return users;
-        } catch (error) {
-          console.error("There was a problem");
-          console.error(error);
-        }
-      }
+            console.log(data[0])
+            for(i = 0; i<3; i++){
+            let newDiv = document.createElement("div");
+            let airlinePara = document.createElement("p");
+            let cityPara = document.createElement("p");
+            let idPara = document.createElement("p");
+            const airline = document.createTextNode("Airline: "+ data[i].Airline);
+            const city = document.createTextNode("City: "+ data[i].City);
+            const id = document.createTextNode("Flight ID: "+ data[i].FlightID);
+            airlinePara.appendChild(airline);
+            cityPara.appendChild(city);
+            idPara.appendChild(id);
+            newDiv.appendChild(airlinePara);
+            newDiv.appendChild(cityPara);
+            newDiv.appendChild(idPara);
+            newDiv.classList.add("flight-info-box");
 
-      async function renderUsers() {
-        const tableBody = document.getElementById("userTableBody");
-        tableBody.innerHTML = "";
-        try {
-          const users = await fetchUsers();
-          if (Array.isArray(users) && users.length > 0) {
-            users.forEach((user) => {
-              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
-              tableBody.innerHTML += row;
-            });
+            const currentDiv = document.getElementById("div1");
+            document.body.insertBefore(newDiv, currentDiv);
+            }
+          } catch (error) {
+            alert("Error Getting Flight Information: " + error.message);
           }
-        } catch (error) {}
-      }
-      document.addEventListener("DOMContentLoaded", renderUsers);
+        });
     </script>
   </body>
 </html>
