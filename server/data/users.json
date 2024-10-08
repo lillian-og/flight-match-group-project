@@ -2,9 +2,17 @@
   {
     "name": "joe",
     "email": "joe@gmail.com",
-    "password": "joe123",
+    "password": "Joejoejoe123",
     "messages": [
       "plane"
+    ]
+  },
+  {
+    "name": "testingtesting",
+    "email": "testing@email.com",
+    "password": "Testing1123",
+    "messages": [
+      "testing testing 123"
     ]
   }
 ]
