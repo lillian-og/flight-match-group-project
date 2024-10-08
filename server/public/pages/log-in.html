@@ -56,14 +56,12 @@
   <body>
     <div class="container patua-one-regular">
       <h1>Log-in</h1>
-      <form action="/submit-form" method="POST">
+      <form id="log-in" action="/log-in" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required /><br /><br />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
         <label for="password">Password:</label>
         <input pattern="[A-Z]{1}[a-z]{4,9}[0-9]{2,4}" type="password" id="password" name="password" required /><br /><br />
-        <input id="submit-button" type="submit" value="Submit" />
+        <input id="log-in-button" type="submit" value="Log-in" />
       </form>
       <a href="/user-management"
         ><button type="button">User Management</button></a
@@ -123,6 +121,44 @@
             console.error("something went wrong" + error.message);
           }
         });
+              document
+        .getElementById("log-in")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            const response = await fetch("/sign-in", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ name, password }),
+            });
+
+            if (!response.ok) {
+              throw new Error("User not found");
+            }
+
+            const user = await response.json();
+
+            // Save user to local storage
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            // Redirect to user-info page
+            window.location.href = "/user-info";
+          } catch (error) {
+            alert("Sign-In Failed: " + error.message);
+          }
+        });
+              document.addEventListener("DOMContentLoaded", renderUsers);
+      document.addEventListener("DOMContentLoaded", () => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+          window.location.href = "/user-info";
+        }
+      });
       async function fetchUsers() {
         try {
           const response = await fetch("/users");

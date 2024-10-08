@@ -86,6 +86,30 @@ app.post('/submit-form', async (req, res) => {
     }
 });
 
+app.post('/log-in', async (req, res) => {
+    try {
+        const { name, password } = req.body;
+
+        // Read users from the data file
+        const data = await fs.readFile(dataPath, 'utf8');
+        const users = JSON.parse(data);
+
+        // Find the user
+        const user = users.find(u => u.name === name && u.password === password);
+
+        if (user) {
+            // Return the user object
+            res.status(200).json(user);
+        } else {
+            // User not found
+            res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error during sign-in:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 // Update user route (currently just logs and sends a response)
 app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
     try {
