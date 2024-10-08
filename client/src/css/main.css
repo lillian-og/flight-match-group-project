@@ -6,6 +6,16 @@ body {
     text-align: center;
 }
 
+.logo {
+    /* border: solid red; */
+    /* background-color: white; */
+}
+
+#logo-picture {
+    /* border: solid magenta; */
+    /* background-color: #ffddff; */
+}
+
 .places-to-go {
     display: flex;
     justify-content: space-between;
@@ -73,4 +83,70 @@ div.search {
 
 .search-input::placeholder, .search-icon {
  color: rbga(0, 0, 0, 0.5);
+}
+
+nav {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #004968;
+  position: relative;
+  height: 60px;
+}
+/* Makes links go horizontal and spaces it out */
+nav ul {
+  display: flex;
+  gap: 35px;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+.menu-icon {
+  display: none;
+}
+.menu-icon i {
+  color: white;
+  font-size: 25px;
+}
+@media (max-width: 600px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    background: #004968;
+    /*     Puts it close together */
+    gap: 0;
+    overflow: hidden;
+  }
+  nav ul li {
+    padding: 10px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+nav ul li a:hover {
+  color: red;
+}
+button {
+  background-color: #63b0d0;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 1px;
+}
+#menuList {
+  /* max-height: 0;
+  overflow: hidden; */
+
+  transition: all 0.5s;
 }
