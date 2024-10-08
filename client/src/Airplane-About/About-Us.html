@@ -5,26 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Match</title>
     <link rel="stylesheet" href="about.css"></linkrel>
+    <link rel="stylesheet" href="flight-pics/"></linkrel>
+   <link rel="stylesheet" href="about.js"></linkrel>
+   <script src="https://kit.fontawesome.com/282cd71205.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav id="navBar">
-        <ul>
-            <h1>Flight Match</h1>
-            <li><a href="https://www.expediagroup.com/home/default.aspx">Home page</a></li>
-             <li><a href="https://www.expediagroup.com/home/default.aspx">Home page</a></li>
-             <li><a href="https://www.expediagroup.com/home/default.aspx">Home page</a></li>
-        </ul>
-    </nav>
-    <div>
-        <h1>Flight Match</h1>
+<nav>
+  <div class="logo" >
+    <img src="flight-pics/flightmatch.png" alt="" width="100px" height="100px">
+</div>
+    <ul id="menuList">
+    <li><a href="">Home</a></li>
+    <li><a href="">About</a></li>
+    <li><a href=""><button>LogIn/Signup</button></a></li>
+  </ul>
+  <div class="menu-icon">
+<i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</nav>
+
+
+    
         <br>
-        <h2>What is Flight Match?</h2>
-        <p></p>
-        <br>
-        <h2>Who's Flying Our Plane?</h2>
+        <div class="wfm">
+        <h1>What is Flight Match?</h1>
     </div>
-    <div id="company-info">
+        <br>
+        <div class="p">
+        <p>In our company Flight Match, we believe that every journey should be seamless and enjoyable,
+            founded by Lily Jenson, who wants travelers to book flights with reliable corporations.
+            We want to connect with our travelers and provide them with the best flight experience
+            possible to fulfill your needs. Our site is simple and easy to use, this allows flyers
+            to compare prices, the booking process doesn’t take any longer than 10-15 minutes, and
+            offers multiple different airlines. Our crew is dedicated to keeping our customers comfortable,
+            establishing a calming traveling experience.</p>
+        </div>
+            <br>
+    <div class="crew">
+        <h1>Who's Flying Our Plane?</h1>
+            </div>
+            <br>
+            <div class="flip-cards">
+                <div id="flip-card-one">
+        <div class="flip-card" >
+            <div class="flip-card-inner" id="flip-card-inner-one">
+              <div class="flip-card-front" id="flip-card-front-one">
+                <img src="flight-pics/Lily.JPG" alt="Person" style="width:140px;height:160px;margin-top:9px;">
+                <h2>Lily J.</h2>
+              </div>
+              <div class="flip-card-back" id="flip-card-back-one">
+                <h3>Project Coordinator</h3>
+                <p>something</p>
+              </div>
+            </div>
+          </div>
+          </div>
+            <br>
+            <div id="flip-card-two">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="flight-pics/Ploog.JPG" alt="Person" style="width:140px;height:160px;margin: 9px;">
+                <h2>Jake P.</h2>
+              </div>
+              <div class="flip-card-back">
+                <h3>Backend Specialist</h3>
+                <p>something</p>
+              </div>
+            </div>
+        </div>
+    </div>
+            <br>
+            <div id="flip-card-three">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="flight-pics/Carter.JPG" alt="Person" style="width:140px;height:160px;margin-top:9px;">
+                    <h2>Carter M.</h2>
+                  </div>
+                  <div class="flip-card-back">
+                    <h3>Database Specialist</h3>
+                    <p>something</p>
+                  </div>
+                </div>
+            </div> 
+        </div>
+            <br>
+            <div id="flip-card-four">
+            <div class="flip-card">
+                <div class="flip-card-inner" >
+                  <div class="flip-card-front" >
+                    <img src="flight-pics/Charlene.JPG" alt="Person" style="width:140px;height:160px;margin-top:9px;">
+                    <h2>Charlene T.</h2>
+                  </div>
+                  <div class="flip-card-back" id="flip-card-back-one">
+                    <h3>Quality Assurance</h3>
+                    <p>something</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+            <br>
+            <div id="flip-card-five">
+            <div class="flip-card">
+                <div class="flip-card-inner" id="flip-card-inner-five">
+                  <div class="flip-card-front">
+                    <img src="flight-pics/Maya.JPG" alt="Person" style="width:140px;height:160px;margin-top:9px;">
+                    <h2>Maya G.</h2>
+                  </div>
+                  <div class="flip-card-back"id="flip-card-back-five">
+                    <h3>Design Specialist</h3>
+                    <p>something</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+            <br>
+            <div id="flip-card-six">
+            <div class="flip-card">
+                <div class="flip-card-inner" id="flip-card-inner-six">
+                  <div class="flip-card-front">
+                    <img src="flight-pics/Mia.JPG" alt="Person" style="width:140px;height:160px;margin-top:9px;">
+                    <h2>Mia C.</h2>
+                  </div>
+                  <div class="flip-card-back"id="flip-card-back-six">
+                    <h3>Design Specialist</h3>
+                    <p>something</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            let menuList = document.getElementById("menuList")
+menuList.style.maxHeight = "0px";
+function toggleMenu() {
+    // console.log('menu toggled');
+    if (menuList.style.maxHeight == "0px") {
+        menuList.style.maxHeight = "300px"
+    }
+    else {
+        menuList.style.maxHeight = "0px";
+    }
+}
+        </script>
         
-    </div>
+
+
 </body>
+
 </html>
