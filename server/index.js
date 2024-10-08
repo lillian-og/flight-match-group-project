@@ -52,8 +52,7 @@ app.get('/log-in', (req, res) => {
 });
 
 app.get('/About-Us', (req, res) => {
-    res.sendFile('Airplane-About/About-Us.html', { root: clientPath });
-    res.sendFile('Airplane-About/about.css', { root: clientPath });
+    res.sendFile('/Airplane-About/About-Us.html', { root: clientPath });
 });
 
 
