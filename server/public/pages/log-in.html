@@ -189,8 +189,8 @@ nav ul li a:hover {
         .getElementById("log-in")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-          const name = document.getElementById("name").value;
-          const password = document.getElementById("password").value;
+          const name = document.getElementById("log-in-name").value;
+          const password = document.getElementById("log-in-password").value;
 
           try {
             const response = await fetch("/sign-in", {

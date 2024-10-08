@@ -51,6 +51,10 @@ app.get('/log-in', (req, res) => {
     res.sendFile('pages/log-in.html', { root: serverPublic });
 });
 
+app.get('/user-info', (req, res) => {
+    res.sendFile('pages/user-info.html', { root: serverPublic });
+});
+
 app.get('/About-Us', (req, res) => {
     res.sendFile('/Airplane-About/About-Us.html', { root: clientPath });
 });
