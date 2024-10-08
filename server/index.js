@@ -3,7 +3,6 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
-var turf = require('@turf/turf');
 // Initialize Express application
 const app = express();
 
