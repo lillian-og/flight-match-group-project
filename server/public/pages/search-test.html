@@ -64,7 +64,7 @@
   </head>
   <body>
     <div class="container patua-one-regular">
-      <h1>Log-in</h1>
+      <h1>Flight Search</h1>
       <form id="submit-locations">
         <label for="from-city">From City:</label>
         <input type="text" id="from-city" name="from-city" required /><br /><br />
@@ -76,9 +76,7 @@
         <input type="text" id="to-state" name="to-state" required /><br /><br />
         <input type = "submit" name="locations-submit" id="locations-submit">
       </form>
-    
     <script>
-
       document
         .getElementById("submit-locations")
         .addEventListener("submit", async (e) => {
@@ -93,27 +91,53 @@
             console.log(data[0])
             for(i = 0; i<3; i++){
             let newDiv = document.createElement("div");
+            let titleHOne = document.createElement("h2");
             let airlinePara = document.createElement("p");
             let cityPara = document.createElement("p");
             let idPara = document.createElement("p");
-            const airline = document.createTextNode("Airline: "+ data[i].Airline);
-            const city = document.createTextNode("City: "+ data[i].City);
-            const id = document.createTextNode("Flight ID: "+ data[i].FlightID);
-            airlinePara.appendChild(airline);
-            cityPara.appendChild(city);
-            idPara.appendChild(id);
+            let milesPara = document.createElement("p");
+            let timePara = document.createElement("p");
+            let costPara = document.createElement("p");
+            let toCity = data[i].City
+            try{
+            const response = await fetch(`/getLocoInfo/${fromCity}/${fromState}/${toState}/${toCity}`);
+            const locoData = await response.json();
+            const titleNode = document.createTextNode(`${fromCity}, ${fromState} to ${toState}, ${toCity}`);
+            const airlineNode = document.createTextNode("Airline: "+ data[i].Airline);
+            const cityNode = document.createTextNode("City: "+ toCity);
+            const idNode = document.createTextNode("Flight ID: "+ data[i].FlightID);
+            let roundedMiles = Math.round((locoData * 100))/100
+            let estimatedTime = Math.round(((roundedMiles/547)*100))/100
+            let estimatedCost = Math.round(((roundedMiles*0.15)*100))/100
+            const milesNode = document.createTextNode("Miles: "+ roundedMiles);
+            const timeNode = document.createTextNode("Time: "+ estimatedTime + " hours");
+            const costNode = document.createTextNode("Cost: $"+ estimatedCost);
+            titleHOne.appendChild(titleNode)
+            airlinePara.appendChild(airlineNode);
+            cityPara.appendChild(cityNode);
+            idPara.appendChild(idNode);
+            milesPara.appendChild(milesNode);
+            timePara.appendChild(timeNode)
+            costPara.appendChild(costNode)
+            newDiv.appendChild(titleHOne)
             newDiv.appendChild(airlinePara);
             newDiv.appendChild(cityPara);
             newDiv.appendChild(idPara);
+            newDiv.appendChild(milesPara);
+            newDiv.appendChild(timePara)
+            newDiv.appendChild(costPara)
             newDiv.classList.add("flight-info-box");
-
             const currentDiv = document.getElementById("div1");
-            document.body.insertBefore(newDiv, currentDiv);
+            document.body.insertBefore(newDiv, currentDiv);}
+            catch{
+              alert("Error Getting Flight Information 2: " + error.message);
+            }
             }
           } catch (error) {
             alert("Error Getting Flight Information: " + error.message);
           }
         });
+
     </script>
   </body>
 </html>
