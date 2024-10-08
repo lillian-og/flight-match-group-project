@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
-      rel="stylesheet"
-    />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link
       rel="icon"
       type="image/x-icon"
@@ -16,11 +15,11 @@
     />
     <title>Log-In</title>
     <style>
-      .patua-one-regular {
-        font-family: "Patua One", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
+     .bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
       body,
       html {
         display: flex;
@@ -121,18 +120,18 @@ nav ul li a:hover {
 </nav>
       <h1>Log-in</h1>
       <form id="log-in" action="/log-in" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required /><br /><br />
-        <label for="password">Password:</label>
-        <input pattern="[A-Z]{1}[a-z]{4,9}[0-9]{2,4}" type="password" id="password" name="password" required /><br /><br />
+        <label class="bebas-neue-regular" for="name">Name:</label>
+        <input class="bebas-neue-regular" type="text" id="name" name="name" required /><br /><br />
+        <label class="bebas-neue-regular" for="password">Password:</label>
+        <input class="bebas-neue-regular" pattern="[A-Z]{1}[a-z]{4,9}[0-9]{2,4}" type="password" id="password" name="password" required /><br /><br />
         <input id="log-in-button" type="submit" value="Log-in" />
       </form>
       <a href="/user-management"
-        ><button type="button">User Management</button></a
+        ><button class="bebas-neue-regular" type="button">User Management</button></a
       >
-        <h3>New to this Site?</h3>
+        <h3 class="bebas-neue-regular">New to this Site?</h3>
         <a href="/sign-up"
-        ><button type="button">Sign Up</button></a
+        ><button class="bebas-neue-regular" type="button">Sign Up</button></a
       >
     <script>
       document

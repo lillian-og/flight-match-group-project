@@ -3,7 +3,6 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
-
 // Initialize Express application
 const app = express();
 
@@ -93,6 +92,238 @@ app.post('/submit-form', async (req, res) => {
         res.status(500).send('An error occurred while processing your submission.');
     }
 });
+
+//flight search
+app.get('/getLocoInfo/:fromCity/:fromState/:toState/:toCity', async (req, res) => {
+    try {
+        const { fromCity, fromState, toCity, toState } = req.params;
+        console.log(toCity)
+        async function getFrom(city, state) {
+            const url = "https://api.mapbox.com/search/geocode/v6/forward?q=" + city + "%20" + state + "&proximity=ip&access_token=pk.eyJ1IjoiY21hbGNvNzA5IiwiYSI6ImNtMXk3eW0zOTE2YTIybXExdjBlOTdnb3QifQ.NLUWCxQsJmH5c1OBjx3z5g";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+                const json = await response.json();
+                fromLong = json.features[0].geometry.coordinates[0]
+                fromLat = json.features[0].geometry.coordinates[1];
+                return [fromLat, fromLong]
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+
+        async function getTo(city, state) {
+            const url = "https://api.mapbox.com/search/geocode/v6/forward?q=" + city + "%20" + state + "&proximity=ip&access_token=pk.eyJ1IjoiY21hbGNvNzA5IiwiYSI6ImNtMXk3eW0zOTE2YTIybXExdjBlOTdnb3QifQ.NLUWCxQsJmH5c1OBjx3z5g";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+
+                const json = await response.json();
+                toLong = json.features[0].geometry.coordinates[0]
+                toLat = json.features[0].geometry.coordinates[1];
+                return [toLat, toLong]
+            } catch (error) {
+                console.error(error.message);
+            }
+
+        }
+
+        async function calculateMiles(fromCity, fromState, toCity, toState) {
+            const fromCoord = await getFrom(fromCity, fromState)
+            const toCoord = await getTo(toCity, toState)
+            var from = turf.point(fromCoord);
+            var to = turf.point(toCoord);
+            var options = { units: "miles" };
+            var distance = turf.distance(from, to, options)
+            console.log(distance + " miles")
+            return distance
+        }
+        milesDistance = await calculateMiles(fromCity, fromState, toCity, toState)
+        console.log(milesDistance)
+        res.status(200).json(milesDistance);
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('An error occurred while updating the user.');
+    }
+});
+
+
+
+app.get('/submitLocations/:fromCity/:fromState/:toState', async (req, res) => {
+    try {
+        const { fromCity, fromState, toCity, toState } = req.params;
+        const data = await fs.readFile(flightDataPath, 'utf8');
+        if (data) {
+            function getIndex(state) {
+                if (state == "alabama" || state == "al") {
+                    return 0
+                }
+                if (state == "alaska" || state == "ak") {
+                    return 1
+                }
+                if (state == "arizona" || state == "az") {
+                    return 2
+                }
+                if (state == "arkansas" || state == "ar") {
+                    return 3
+                }
+                if (state == "california" || state == "ca") {
+                    return 4
+                }
+                if (state == "colorado" || state == "co") {
+                    return 5
+                }
+                if (state == "connecticut" || state == "ct") {
+                    return 6
+                }
+                if (state == "delaware" || state == "de") {
+                    return 7
+                }
+                if (state == "florida" || state == "fl") {
+                    return 8
+                }
+                if (state == "georgia" || state == "ga") {
+                    return 9
+                }
+                if (state == "hawaii" || state == "hi") {
+                    return 10
+                }
+                if (state == "idaho" || state == "id") {
+                    return 11
+                }
+                if (state == "illinois" || state == "il") {
+                    return 12
+                }
+                if (state == "indiana" || state == "in") {
+                    return 13
+                }
+                if (state == "iowa" || state == "ia") {
+                    return 14
+                }
+                if (state == "kansas" || state == "ks") {
+                    return 15
+                }
+                if (state == "kentucky" || state == "ky") {
+                    return 16
+                }
+                if (state == "louisiana" || state == "la") {
+                    return 17
+                }
+                if (state == "maine" || state == "me") {
+                    return 18
+                }
+                if (state == "maryland" || state == "az") {
+                    return 19
+                }
+                if (state == "massachusetts" || state == "ma") {
+                    return 20
+                }
+                if (state == "michigan" || state == "mi") {
+                    return 21
+                }
+                if (state == "minnesota" || state == "mn") {
+                    return 22
+                }
+                if (state == "mississippi" || state == "ms") {
+                    return 23
+                }
+                if (state == "missouri" || state == "mo") {
+                    return 24
+                }
+                if (state == "montana" || state == "mt") {
+                    return 25
+                }
+                if (state == "nebraska" || state == "ne") {
+                    return 26
+                }
+                if (state == "nevada" || state == "nv") {
+                    return 27
+                }
+                if (state == "new hampshire" || state == "nh") {
+                    return 28
+                }
+                if (state == "new jersey" || state == "nj") {
+                    return 29
+                }
+                if (state == "new mexico" || state == "nm") {
+                    return 30
+                }
+                if (state == "new york" || state == "ny") {
+                    return 31
+                }
+                if (state == "north carolina" || state == "nc") {
+                    return 32
+                }
+                if (state == "north dakota" || state == "nd") {
+                    return 33
+                }
+                if (state == "ohio" || state == "oh") {
+                    return 34
+                }
+                if (state == "oklahoma" || state == "ok") {
+                    return 35
+                }
+                if (state == "oregon" || state == "or") {
+                    return 36
+                }
+                if (state == "pennsylvania" || state == "pa") {
+                    return 37
+                }
+                if (state == "rhode island" || state == "ri") {
+                    return 38
+                }
+                if (state == "south carolina" || state == "sc") {
+                    return 39
+                }
+                if (state == "south dakota" || state == "sd") {
+                    return 40
+                }
+                if (state == "tennessee" || state == "tn") {
+                    return 41
+                }
+                if (state == "texas" || state == "tx") {
+                    return 42
+                }
+                if (state == "utah" || state == "ut") {
+                    return 43
+                }
+                if (state == "vermont" || state == "vt") {
+                    return 44
+                }
+                if (state == "virginia" || state == "va") {
+                    return 45
+                }
+                if (state == "washington" || state == "wa") {
+                    return 46
+                }
+                if (state == "west virginia" || state == "wv") {
+                    return 47
+                }
+                if (state == "wisconsin" || state == "wi") {
+                    return 48
+                }
+                if (state == "wyoming" || state == "wy") {
+                    return 49
+                }
+            }
+            let fromIndex = getIndex(fromState)
+            let toIndex = getIndex(toState)
+            let flightData = JSON.parse(data);
+            let flightsAvail = flightData[fromIndex].toState[toIndex].toState
+            // console.log(flightsAvail)
+            res.status(200).json(flightsAvail);
+        }
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('An error occurred while updating the user.');
+    }
+});
+
 
 app.post('/log-in', async (req, res) => {
     try {
