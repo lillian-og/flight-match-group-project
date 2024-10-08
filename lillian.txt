@@ -31,3 +31,15 @@ github.
 
 4. what is one way you can help support your team moving forward?
 - I feel like asking what everyone is working on and maybe giving more live feedback during the workday would help.
+
+
+10/08/2024
+
+1. what is one topic you had to revisit from last year? 
+- lots of css aspects that I forgot existed. I had to use felx box quite a bit.
+
+2. what is one real life website that inspired you?
+-Tripadvisor!! I took so much inspiration from that page.
+
+3. Have you considered color blindness in your color palette?
+-No we have not.
