@@ -64,15 +64,26 @@ div.search {
 
 .search {
     --padding: 14px;
-
-    width: max-content;
+    width:100%;
+    /* flex-grow: 1; */
     display:flex;
     align-items: center;
     padding:var(--padding);
     border-radius: 28px;
     background: #f6f6f6;
     transition: box-shadow 0.25s;   
-    
+}
+#search{
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+.search-container {
+  justify-content: center;
+  display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* background-color: #A85A2A; */
 }
 
 .search:focus-within {
@@ -159,7 +170,22 @@ button {
 
   transition: all 0.5s;
 }
-
+.flight-info-box{
+  display: inline-block;
+        width: 20%;
+        background-color: #FCEAD2;
+        padding: 70px;
+        margin: 20px;
+        align-items: center;
+        /* border: 1px solid black; */
+        border-radius: 50px;
+        box-shadow: 10px 7px 15px black;
+        /* height: 50vh; */
+      }
+      /* .parent-div{
+        display: flex;
+        flex-wrap: flex;
+        /* background-color: #A85A2A; */
     </style>
     <link rel="stylesheet" href="main.css" />
     <link
@@ -196,14 +222,31 @@ button {
       </nav> -->
 
     <h1 class="bebas-neue-regular" id="where">Where to ?</h1>
-
-    <form id="search" action="">
+    <form id="search-container">
+    <div id="search">
+      <div class="search">
+        <span  class="search-icon material-symbols-outlined">search</span>
+        <input class="search-input" id="from-city" type="search" placeholder="Where From (City)" />
+      </div>
+    </div>
+    <div id="search">
       <div class="search">
         <span class="search-icon material-symbols-outlined">search</span>
-        <input class="search-input" type="search" placeholder="Search" />
+        <input class="search-input" id="from-state" type="search" placeholder="Where From (State)" />
       </div>
-    </form>
-
+    </div>
+    <div id="search">
+      <div class="search">
+        <span class="search-icon material-symbols-outlined">search</span>
+        <input class="search-input" id="to-state" type="search" placeholder="Where To (State)" />
+      </div>
+    </div>
+    <div id="search">
+      <div class="submit">
+        <input class="submit button" type="submit" />
+      </div>
+    </div>
+  </form>
     <div class="places-to-go">
       <div class="picture-wrapper">
         <img class="pictures" src="pictures\chicago.jpg" alt="chicago" />
@@ -230,23 +273,22 @@ button {
         <p class="bebas-neue-regular">Orlando</p>
       </div>
     </div>
-    <p>Some Text</p>
-    <a href="/log-in"><button>Go to Form</button>
-      <a href="/search-test"><button>Go to Search Test</button>
   </body>
   <script>
           document
-        .getElementById("submit-locations")
+        .getElementById("search-container")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-          const fromCity = document.getElementById("from-city").value;
-          const fromState = document.getElementById("from-state").value;
+          const fromCity = document.getElementById("from-city").value.toLowerCase();
+          const fromState = document.getElementById("from-state").value.toLowerCase();
           // const toCity = document.getElementById("to-city").value;
-          const toState = document.getElementById("to-state").value;
+          const toState = document.getElementById("to-state").value.toLowerCase();
           try {
             const response = await fetch(`/submitLocations/${fromCity}/${fromState}/${toState}`);
             const data = await response.json();
             console.log(data[0])
+            let parentDiv = document.createElement("div");
+            parentDiv.classList.add("parent-div");
             for(i = 0; i<3; i++){
             let newDiv = document.createElement("div");
             let titleHOne = document.createElement("h2");
@@ -260,7 +302,9 @@ button {
             try{
             const response = await fetch(`/getLocoInfo/${fromCity}/${fromState}/${toState}/${toCity}`);
             const locoData = await response.json();
-            const titleNode = document.createTextNode(`${fromCity}, ${fromState} to ${toState}, ${toCity}`);
+            const titleNode = document.createTextNode(`${fromCity.charAt(0).toUpperCase()+ fromCity.slice(1)}, 
+            ${fromState.charAt(0).toUpperCase()+ fromState.slice(1)} to 
+            ${toState.charAt(0).toUpperCase()+ toState.slice(1)}, ${toCity}`);
             const airlineNode = document.createTextNode("Airline: "+ data[i].Airline);
             const cityNode = document.createTextNode("City: "+ toCity);
             const idNode = document.createTextNode("Flight ID: "+ data[i].FlightID);
@@ -285,6 +329,7 @@ button {
             newDiv.appendChild(timePara)
             newDiv.appendChild(costPara)
             newDiv.classList.add("flight-info-box");
+            parentDiv.appendChild(newDiv)
             const currentDiv = document.getElementById("div1");
             document.body.insertBefore(newDiv, currentDiv);}
             catch{
