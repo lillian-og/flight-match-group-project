@@ -242,10 +242,44 @@ button {
     <h1 class="bebas-neue-regular" id="where">Where to ?</h1>
     <p class="bebas-neue-regular" id="slogan">find where you need to be</p>
 
-    <form id="search" action="">
-      <div class="search">
-        <span class="search-icon material-symbols-outlined">search</span>
-        <input class="search-input" type="search" placeholder="Search" />
+<form id="search-container">
+      <div id="search">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input
+            class="search-input"
+            id="from-city"
+            type="search"
+            placeholder="Where From (City)"
+          />
+        </div>
+      </div>
+      <div id="search">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input
+            class="search-input"
+            id="from-state"
+            type="search"
+            placeholder="Where From (State)"
+          />
+        </div>
+      </div>
+      <div id="search">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input
+            class="search-input"
+            id="to-state"
+            type="search"
+            placeholder="Where To (State)"
+          />
+        </div>
+      </div>
+      <div id="search">
+        <div class="submit">
+          <input class="submit-button" value="Search" type="submit" />
+        </div>
       </div>
     </form>
 
