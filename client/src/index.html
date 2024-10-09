@@ -8,184 +8,214 @@
     <style>
       /* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"); */
       body {
-    background-color: #63B0D0;
-}
+        background-color: #63b0d0;
+      }
 
-#where {
-    text-align: center;
-}
+      #where {
+        text-align: center;
+      }
 
-.logo {
-    /* border: solid red; */
-    /* background-color: white; */
-}
+      .logo {
+        /* border: solid red; */
+        /* background-color: white; */
+      }
 
-#logo-picture {
-    /* border: solid magenta; */
-    /* background-color: #ffddff; */
-}
+      #logo-picture {
+        /* border: solid magenta; */
+        /* background-color: #ffddff; */
+      }
 
-.places-to-go {
-    display: flex;
-    justify-content: space-between;
-    /* margin-left: 7vw; */
-    /* width: 450px; */
-    margin: auto;
-    /* height: 175px; */
-    border: #FCEAD2 ;
-}
+      .places-to-go {
+        display: flex;
+        justify-content: space-between;
+        /* margin-left: 7vw; */
+        /* width: 450px; */
+        margin: auto;
+        /* height: 175px; */
+        border: #fcead2;
+      }
 
-.pictures {
-    height: 175px;
-    width: 250px;
-    border: 10px solid rgb(249, 227, 186);   
-}
+      .pictures {
+        height: 175px;
+        width: 250px;
+        border: 10px solid rgb(249, 227, 186);
+      }
 
-.picture-wrapper {
-    text-align: center;
-}
+      .picture-wrapper {
+        text-align: center;
+      }
 
-.bebas-neue-regular {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+      .bebas-neue-regular {
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-form {
-    display: flex;
-    justify-content: center;
-}
+      form {
+        display: flex;
+        justify-content: center;
+      }
 
-div.search {
-    justify-content: center;
-    margin-bottom: 2em;
-}
+      div.search {
+        justify-content: center;
+        margin-bottom: 2em;
+      }
 
+      .search {
+        --padding: 14px;
+        width: 100%;
+        /* flex-grow: 1; */
+        display: flex;
+        align-items: center;
+        padding: var(--padding);
+        border-radius: 28px;
+        background: #f6f6f6;
+        transition: box-shadow 0.25s;
+      }
+      #search {
+        margin-right: 3%;
+        margin-left: 3%;
+      }
 
-.search {
-    --padding: 14px;
-    width:100%;
-    /* flex-grow: 1; */
-    display:flex;
-    align-items: center;
-    padding:var(--padding);
-    border-radius: 28px;
-    background: #f6f6f6;
-    transition: box-shadow 0.25s;   
-}
-#search{
-  margin-right: 3%;
-  margin-left: 3%;
-}
+      .search-container {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* background-color: #A85A2A; */
+      }
 
-.search-container {
-  justify-content: center;
-  display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    /* background-color: #A85A2A; */
-}
+      .search:focus-within {
+        box-shadow: 0 0 2px rbga (0, 0, 0, 0.75);
+      }
 
-.search:focus-within {
-    box-shadow: 0 0 2px rbga (0, 0, 0, 0.75);
-}
+      .search-input {
+        font-size: 16px;
+        font-family: "Lexend", sans serif;
+        color: #333333;
+        margin-left: var(--padding);
+        outline: none;
+        border: none;
+        background: transparent;
+        width: 300px;
+      }
 
-.search-input {
-    font-size:  16px;
-    font-family: 'Lexend', sans serif;
-    color: #333333;
-    margin-left: var(--padding);
-    outline: none;
-    border: none;
-    background: transparent;
-    width: 300px;
-}
+      .search-input::placeholder,
+      .search-icon {
+        color: rbga(0, 0, 0, 0.5);
+      }
 
-.search-input::placeholder, .search-icon {
- color: rbga(0, 0, 0, 0.5);
-}
-
-nav {
-  padding: 10px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #004968;
-  position: relative;
-  height: 60px;
-}
-/* Makes links go horizontal and spaces it out */
-nav ul {
-  display: flex;
-  gap: 35px;
-}
-nav ul li {
-  list-style-type: none;
-}
-nav ul li a {
-  text-decoration: none;
-  color: white;
-}
-.menu-icon {
-  display: none;
-}
-.menu-icon i {
-  color: white;
-  font-size: 25px;
-}
-@media (max-width: 600px) {
-  nav ul {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    text-align: center;
-    background: #004968;
-    /*     Puts it close together */
-    gap: 0;
-    overflow: hidden;
-  }
-  nav ul li {
-    padding: 10px;
-  }
-  .menu-icon {
-    display: block;
-    cursor: pointer;
-  }
-}
-nav ul li a:hover {
-  color: #A85A2A;
-}
-button {
-  background-color: #63b0d0;
-  color: white;
-  padding: 5px;
-  border-radius: 10px;
-  margin-top: 1px;
-}
-#menuList {
-  /* max-height: 0;
+      nav {
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #004968;
+        position: relative;
+        height: 60px;
+      }
+      /* Makes links go horizontal and spaces it out */
+      nav ul {
+        display: flex;
+        gap: 35px;
+      }
+      nav ul li {
+        list-style-type: none;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+      }
+      .menu-icon {
+        display: none;
+      }
+      .menu-icon i {
+        color: white;
+        font-size: 25px;
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          text-align: center;
+          background: #004968;
+          /*     Puts it close together */
+          gap: 0;
+          overflow: hidden;
+        }
+        nav ul li {
+          padding: 10px;
+        }
+        .menu-icon {
+          display: block;
+          cursor: pointer;
+        }
+      }
+      nav ul li a:hover {
+        color: #a85a2a;
+      }
+      button {
+        background-color: #63b0d0;
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        margin-top: 1px;
+      }
+      #menuList {
+        /* max-height: 0;
   overflow: hidden; */
 
-  transition: all 0.5s;
-}
-.flight-info-box{
-  display: inline-block;
-        width: 20%;
-        background-color: #FCEAD2;
-        padding: 70px;
-        margin: 20px;
+        transition: all 0.5s;
+      }
+      .flight-info-box {
+        display: inline-block;
+        /* width: 20%; */
+        flex: auto;
+        background-color: #fcead2;
+        padding: 20px;
+        margin: 40px;
         align-items: center;
         /* border: 1px solid black; */
         border-radius: 50px;
         box-shadow: 10px 7px 15px black;
         /* height: 50vh; */
+        flex-grow: 1;
+        width: 20%;
+        height: auto;
       }
       /* .parent-div{
         display: flex;
         flex-wrap: flex;
         /* background-color: #A85A2A; */
+      .submit-button {
+        --padding: 18.5px;
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        padding: var(--padding);
+        border-radius: 28px;
+        background: #f6f6f6;
+        transition: background-color 0.25s;
+        border: none;
+      }
+      .submit-button:hover {
+        background-color: orange;
+        transition: background-color 0.25s;
+        cursor: pointer;
+      }
+      #flights-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .flight-image {
+        width: 100px;
+        height: 100px;
+      }
     </style>
     <link rel="stylesheet" href="main.css" />
     <link
@@ -223,30 +253,45 @@ button {
 
     <h1 class="bebas-neue-regular" id="where">Where to ?</h1>
     <form id="search-container">
-    <div id="search">
-      <div class="search">
-        <span  class="search-icon material-symbols-outlined">search</span>
-        <input class="search-input" id="from-city" type="search" placeholder="Where From (City)" />
+      <div id="search">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input
+            class="search-input"
+            id="from-city"
+            type="search"
+            placeholder="Where From (City)"
+          />
+        </div>
       </div>
-    </div>
-    <div id="search">
-      <div class="search">
-        <span class="search-icon material-symbols-outlined">search</span>
-        <input class="search-input" id="from-state" type="search" placeholder="Where From (State)" />
+      <div id="search">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input
+            class="search-input"
+            id="from-state"
+            type="search"
+            placeholder="Where From (State)"
+          />
+        </div>
       </div>
-    </div>
-    <div id="search">
-      <div class="search">
-        <span class="search-icon material-symbols-outlined">search</span>
-        <input class="search-input" id="to-state" type="search" placeholder="Where To (State)" />
+      <div id="search">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input
+            class="search-input"
+            id="to-state"
+            type="search"
+            placeholder="Where To (State)"
+          />
+        </div>
       </div>
-    </div>
-    <div id="search">
-      <div class="submit">
-        <input class="submit button" type="submit" />
+      <div id="search">
+        <div class="submit">
+          <input class="submit-button" value="Search" type="submit" />
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
     <div class="places-to-go">
       <div class="picture-wrapper">
         <img class="pictures" src="pictures\chicago.jpg" alt="chicago" />
@@ -273,72 +318,98 @@ button {
         <p class="bebas-neue-regular">Orlando</p>
       </div>
     </div>
+    <div id="flights-container"></div>
   </body>
   <script>
-          document
-        .getElementById("search-container")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const fromCity = document.getElementById("from-city").value.toLowerCase();
-          const fromState = document.getElementById("from-state").value.toLowerCase();
-          // const toCity = document.getElementById("to-city").value;
-          const toState = document.getElementById("to-state").value.toLowerCase();
-          try {
-            const response = await fetch(`/submitLocations/${fromCity}/${fromState}/${toState}`);
-            const data = await response.json();
-            console.log(data[0])
-            let parentDiv = document.createElement("div");
-            parentDiv.classList.add("parent-div");
-            for(i = 0; i<3; i++){
+    document
+      .getElementById("search-container")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const fromCity = document
+          .getElementById("from-city")
+          .value.toLowerCase();
+        const fromState = document
+          .getElementById("from-state")
+          .value.toLowerCase();
+        // const toCity = document.getElementById("to-city").value;
+        const toState = document.getElementById("to-state").value.toLowerCase();
+        try {
+          const response = await fetch(
+            `/submitLocations/${fromCity}/${fromState}/${toState}`
+          );
+          const data = await response.json();
+          console.log(data[0]);
+          // let parentDiv = document.createElement("div");
+          // parentDiv.classList.add("parent-div");
+          for (i = 0; i < 3; i++) {
             let newDiv = document.createElement("div");
-            let titleHOne = document.createElement("h2");
+            let titleHOne = document.createElement("h3");
             let airlinePara = document.createElement("p");
-            let cityPara = document.createElement("p");
+            let img = document.createElement("img");
+            img.src = "./pictures/denver.jpg";
+            img.classList.add("flight-image");
+            // let cityPara = document.createElement("p");
             let idPara = document.createElement("p");
             let milesPara = document.createElement("p");
             let timePara = document.createElement("p");
             let costPara = document.createElement("p");
-            let toCity = data[i].City
-            try{
-            const response = await fetch(`/getLocoInfo/${fromCity}/${fromState}/${toState}/${toCity}`);
-            const locoData = await response.json();
-            const titleNode = document.createTextNode(`${fromCity.charAt(0).toUpperCase()+ fromCity.slice(1)}, 
-            ${fromState.charAt(0).toUpperCase()+ fromState.slice(1)} to 
-            ${toState.charAt(0).toUpperCase()+ toState.slice(1)}, ${toCity}`);
-            const airlineNode = document.createTextNode("Airline: "+ data[i].Airline);
-            const cityNode = document.createTextNode("City: "+ toCity);
-            const idNode = document.createTextNode("Flight ID: "+ data[i].FlightID);
-            let roundedMiles = Math.round((locoData * 100))/100
-            let estimatedTime = Math.round(((roundedMiles/547)*100))/100
-            let estimatedCost = Math.round(((roundedMiles*0.15)*100))/100
-            const milesNode = document.createTextNode("Miles: "+ roundedMiles);
-            const timeNode = document.createTextNode("Time: "+ estimatedTime + " hours");
-            const costNode = document.createTextNode("Cost: $"+ estimatedCost);
-            titleHOne.appendChild(titleNode)
-            airlinePara.appendChild(airlineNode);
-            cityPara.appendChild(cityNode);
-            idPara.appendChild(idNode);
-            milesPara.appendChild(milesNode);
-            timePara.appendChild(timeNode)
-            costPara.appendChild(costNode)
-            newDiv.appendChild(titleHOne)
-            newDiv.appendChild(airlinePara);
-            newDiv.appendChild(cityPara);
-            newDiv.appendChild(idPara);
-            newDiv.appendChild(milesPara);
-            newDiv.appendChild(timePara)
-            newDiv.appendChild(costPara)
-            newDiv.classList.add("flight-info-box");
-            parentDiv.appendChild(newDiv)
-            const currentDiv = document.getElementById("div1");
-            document.body.insertBefore(newDiv, currentDiv);}
-            catch{
+            let toCity = data[i].City;
+            try {
+              const response = await fetch(
+                `/getLocoInfo/${fromCity}/${fromState}/${toState}/${toCity}`
+              );
+              const locoData = await response.json();
+              const titleNode = document.createTextNode(`${
+                fromCity.charAt(0).toUpperCase() + fromCity.slice(1)
+              }, 
+            ${fromState.charAt(0).toUpperCase() + fromState.slice(1)} to 
+            ${toCity},
+            ${toState.charAt(0).toUpperCase() + toState.slice(1)}`);
+              const airlineNode = document.createTextNode(
+                "Airline: " + data[i].Airline
+              );
+              const cityNode = document.createTextNode("City: " + toCity);
+              const idNode = document.createTextNode(
+                "Flight ID: " + data[i].FlightID
+              );
+              let roundedMiles = Math.round(locoData * 100) / 100;
+              let estimatedTime = Math.round((roundedMiles / 547) * 100) / 100;
+              let estimatedCost = Math.round(roundedMiles * 0.15 * 100) / 100;
+              const milesNode = document.createTextNode(
+                "Flight Distance: " + roundedMiles + " miles"
+              );
+              const timeNode = document.createTextNode(
+                "Flight Time: " + estimatedTime + " hours"
+              );
+              const costNode = document.createTextNode(
+                "Cost: $" + estimatedCost
+              );
+              titleHOne.appendChild(titleNode);
+              airlinePara.appendChild(airlineNode);
+              // cityPara.appendChild(cityNode);
+              idPara.appendChild(idNode);
+              milesPara.appendChild(milesNode);
+              timePara.appendChild(timeNode);
+              costPara.appendChild(costNode);
+              newDiv.appendChild(titleHOne);
+              newDiv.appendChild(airlinePara);
+              // newDiv.appendChild(cityPara);
+              newDiv.appendChild(idPara);
+              newDiv.appendChild(milesPara);
+              newDiv.appendChild(timePara);
+              newDiv.appendChild(costPara);
+              newDiv.appendChild(img);
+              newDiv.classList.add("flight-info-box");
+              // parentDiv.appendChild(newDiv);
+              const currentDiv = document.getElementById("flights-container");
+              currentDiv.appendChild(newDiv);
+            } catch {
               alert("Error Getting Flight Information 2: " + error.message);
             }
-            }
-          } catch (error) {
-            alert("Error Getting Flight Information: " + error.message);
           }
-        });
+        } catch (error) {
+          alert("Error Getting Flight Information: " + error.message);
+        }
+      });
   </script>
 </html>
