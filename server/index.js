@@ -9,6 +9,7 @@ const app = express();
 // Define paths
 const clientPath = path.join(__dirname, '..', 'client/src');
 const dataPath = path.join(__dirname, 'data', 'users.json');
+const flightsPath = path.join(__dirname, 'data', 'flights.json');
 const serverPublic = path.join(__dirname, 'public');
 // Middleware setup
 app.use(express.static(clientPath)); // Serve static files from client directory
@@ -37,6 +38,21 @@ app.get('/users', async (req, res) => {
     }
 });
 
+app.get('/flights', async (req, res) => {
+    try {
+        const data = await fs.readFile(flightsPath, 'utf8');
+
+        const flights = JSON.parse(data);
+        if (!flights) {
+            throw new Error("Error no flightss available");
+        }
+        res.status(200).json(flights);
+    } catch (error) {
+        console.error("Problem getting users" + error.message);
+        res.status(500).json({ error: "Problem reading users" });
+    }
+});
+
 // Form route
 app.get('/sign-up', (req, res) => {
     res.sendFile('pages/sign-up.html', { root: serverPublic });
@@ -58,6 +74,13 @@ app.get('/About-Us', (req, res) => {
     res.sendFile('/Airplane-About/About-Us.html', { root: clientPath });
 });
 
+app.get('/flight-management', (req, res) => {
+    res.sendFile('pages/flight-management.html', { root: serverPublic });
+});
+
+app.get('/add-flights', (req, res) => {
+    res.sendFile('pages/add-flights.html', { root: serverPublic });
+});
 
 // Form submission route
 app.post('/submit-form', async (req, res) => {
@@ -87,6 +110,39 @@ app.post('/submit-form', async (req, res) => {
         // Save updated users
         await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
         res.redirect('/sign-up');
+    } catch (error) {
+        console.error('Error processing form:', error);
+        res.status(500).send('An error occurred while processing your submission.');
+    }
+});
+
+app.post('/flight-form', async (req, res) => {
+    try {
+        const { num, count, message } = req.body;
+
+        // Read existing users from file
+        let flights = [];
+        try {
+            const data = await fs.readFile(flightsPath, 'utf8');
+            flights = JSON.parse(data);
+        } catch (error) {
+            // If file doesn't exist or is empty, start with an empty array
+            console.error('Error reading user data:', error);
+            flights = [];
+        }
+
+        // Find or create user
+        let flight = flights.find(u => u.num === num && u.count === count);
+        if (flight) {
+            flight.messages.push(message);
+        } else {
+            flight = { num, count, messages: [message] };
+            flights.push(flight);
+        }
+
+        // Save updated users
+        await fs.writeFile(flightsPath, JSON.stringify(flights, null, 2));
+        res.redirect('/add-flights');
     } catch (error) {
         console.error('Error processing form:', error);
         res.status(500).send('An error occurred while processing your submission.');
@@ -378,6 +434,34 @@ app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, 
     }
 });
 
+app.put('/update-flight/:currentNum/:currentCount', async (req, res) => {
+    try {
+        const { currentNum, currentCount } = req.params;
+        const { newNum, newCount, newPass } = req.body;
+        console.log('Current Num:', { currentNum });
+        console.log('Current Count:', { currentCount });
+        console.log('New flight data:', { newNum, newCount, newPass });
+        const data = await fs.readFile(flightsPath, 'utf8');
+        if (data) {
+            let flights = JSON.parse(data);
+            const flightIndex = flights.findIndex(flight => flight.num === currentNum && flight.count === currentCount);
+            let currentPass = flightIndex.messages;
+            console.log(flightIndex);
+            if (flightIndex === -1) {
+                return res.status(404).json({ message: "User not found" })
+            }
+            flights[flightIndex] = { ...flights[flightIndex], num: newNum, count: newCount, messages: currentPass + ", " + newPass };
+            console.log(flights);
+            await fs.writeFile(flightsPath, JSON.stringify(flights, null, 2));
+
+            res.status(200).json({ message: `You sent ${newNum}` });
+        }
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('An error occurred while updating the user.');
+    }
+});
+
 app.delete('/user/:name', async (req, res) => {
     try {
         console.log(req.params);
@@ -397,6 +481,34 @@ app.delete('/user/:name', async (req, res) => {
         users.splice(userIndex, 1);
         try {
             await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+        } catch (error) {
+            console.error('failed to write to database')
+        }
+        res.send('User deleted successfully');
+    } catch (error) {
+        res.status(500).send('There was an error deleting user');
+    }
+});
+
+app.delete('/flight/:num', async (req, res) => {
+    try {
+        console.log(req.params);
+        const { num } = req.params;
+        let flights = [];
+        try {
+            const data = await fs.readFile(flightsPath, 'utf8');
+            flights = JSON.parse(data);
+        } catch (error) {
+            return res.status(404).send('Data not found');
+        }
+        const flightIndex = flights.findIndex(flight => flight.num === num);
+        // console.log(userIndex);
+        if (flightIndex === -1) {
+            return res.status(404).send('User not found');
+        }
+        flights.splice(flightsIndex, 1);
+        try {
+            await fs.writeFile(flightsPath, JSON.stringify(flights, null, 2));
         } catch (error) {
             console.error('failed to write to database')
         }

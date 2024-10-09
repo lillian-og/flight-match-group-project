@@ -1,5 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background-color: #63B0D0;
+    background-color: #fcead2;
+    overflow-x: hidden;
 }
 
 #where {
@@ -29,11 +35,19 @@ body {
 .pictures {
     height: 175px;
     width: 250px;
-    border: 10px solid rgb(249, 227, 186);   
+  border-style: solid;
+  border-width: 10px;
+  border-image: linear-gradient(to bottom right, #63B0D0, #004968, #A85A2A, #E7925D) 1;
+   
+}
+
+.pictures:hover{
+ transform: translateY(-10px);
 }
 
 .picture-wrapper {
     text-align: center;
+    
 }
 
 .bebas-neue-regular {
@@ -150,3 +164,51 @@ button {
 
   transition: all 0.5s;
 }
+
+#flight-finder {
+  border: solid red;
+  height: 10rem;
+}
+#slogan {
+text-align: center;
+}
+
+
+/* FOOTER */
+
+footer,
+#copyright {
+  background: #004968;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+  /* padding: 10px 5%; */
+  margin-right: 10%;
+  justify-content: space-between;
+  /* border: solid lime; */
+  /* margin-left: 0; */
+}
+footer ul li {
+  list-style-type: none;
+}
+footer ul li a {
+  text-decoration: none;
+  color: white;
+  line-height: 3;
+  cursor: pointer;
+}
+footer ul li a:hover {
+  color: #a85a2a;
+}
+h4 {
+  color: #fcead2;
+  font-weight: bold;
+  text-decoration: overline;
+}
+#Copyright {
+  color: white;
+}
+
+/* FOOTER ENDS */
+

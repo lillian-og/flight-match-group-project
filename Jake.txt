@@ -21,3 +21,8 @@ Some css styling like box shadow.
 just some general flight match sites have inspired us, idk about specific ones.
 i have not considered how people with disabilies might view the site, if we were to take that into account, we might have to-
 -change some colors or fonts in order to make it more accessible.
+
+10/9/2024
+Our project was very cohesive with a maintained color pallete and design style.
+Our teams greatest streangth was that we didnt disagree on much stuff, meaning we had more to to work instead of making decisions.
+A problem that i encountered was that of the flight detete not working, i genuinely could not find any issue with the code and i still have no clue what was wrong.

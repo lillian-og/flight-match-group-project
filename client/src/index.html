@@ -4,11 +4,208 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Airplane Site</title>
-
+    <link rel="stylesheet" href="css/main.css"></linkrel>
+    <link rel="stylesheet" href="Airplane-About/about.css"></linkrel>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+      body {
+    background-color:rgb(247, 219, 168);
+}
+
+#where {
+    text-align: center;
+}
+
+.logo {
+    /* border: solid red; */
+    /* background-color: white; */
+}
+
+#logo-picture {
+    /* border: solid magenta; */
+    /* background-color: #ffddff; */
+}
+
+.places-to-go {
+    display: flex;
+    justify-content: space-between;
+    /* margin-left: 7vw; */
+    /* width: 450px; */
+    margin: auto;
+    /* height: 175px; */
+    border: #FCEAD2 ;
+}
+
+/* .pictures {
+    height: 175px;
+    width: 250px;
+    border: 10px solid rgb(249, 227, 186);   
+} */
+
+.picture-wrapper {
+    text-align: center;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+div.search {
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+
+.search {
+    --padding: 14px;
+
+    width: max-content;
+    display:flex;
+    align-items: center;
+    padding:var(--padding);
+    border-radius: 28px;
+    background: #f6f6f6;
+    transition: box-shadow 0.25s;   
+    
+}
+
+.search:focus-within {
+    box-shadow: 0 0 2px rbga (0, 0, 0, 0.75);
+}
+
+.search-input {
+    font-size:  16px;
+    font-family: 'Lexend', sans serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 300px;
+}
+
+.search-input::placeholder, .search-icon {
+ color: rbga(0, 0, 0, 0.5);
+}
+
+nav {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #004968;
+  position: relative;
+  height: 60px;
+}
+/* Makes links go horizontal and spaces it out */
+nav ul {
+  display: flex;
+  gap: 35px;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+.menu-icon {
+  display: none;
+}
+.menu-icon i {
+  color: white;
+  font-size: 25px;
+}
+@media (max-width: 600px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    background: #004968;
+    /*     Puts it close together */
+    gap: 0;
+    overflow: hidden;
+  }
+  nav ul li {
+    padding: 10px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+nav ul li a:hover {
+  color: #A85A2A;
+}
+button {
+  background-color: #63b0d0;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 1px;
+}
+#menuList {
+  /* max-height: 0;
+  overflow: hidden; */
+
+  transition: all 0.5s;
+}
+
+      .flight-info-box {
+        display: inline-block;
+        /* width: 20%; */
+        flex: auto;
+        background-color: #fcead2;
+        padding: 20px;
+        margin: 40px;
+        align-items: center;
+        /* border: 1px solid black; */
+        border-radius: 50px;
+        box-shadow: 10px 7px 15px black;
+        /* height: 50vh; */
+        flex-grow: 1;
+        width: 20%;
+        height: auto;
+      }
+      /* .parent-div{
+        display: flex;
+        flex-wrap: flex;
+        /* background-color: #A85A2A; */
+      .submit-button {
+        --padding: 18.5px;
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        padding: var(--padding);
+        border-radius: 28px;
+        background: #f6f6f6;
+        transition: background-color 0.25s;
+        border: none;
+      }
+      .submit-button:hover {
+        background-color: orange;
+        transition: background-color 0.25s;
+        cursor: pointer;
+      }
+      #flights-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
     </style>
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="main.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -43,6 +240,7 @@
       </nav> -->
 
     <h1 class="bebas-neue-regular" id="where">Where to ?</h1>
+    <p class="bebas-neue-regular" id="slogan">find where you need to be</p>
 
     <form id="search" action="">
       <div class="search">
@@ -77,6 +275,52 @@
         <p class="bebas-neue-regular">Orlando</p>
       </div>
     </div>
+
+
+        
+    <div id="flight-finder"></div>
+    
+    <h1 class="bebas-neue-regular" id="where">Safe Travels Starts with flight match!</h1>
+    
+    <p class="bebas-neue-regular" id="slogan" >easy breezy, relax and let us do the work.</p>
+
+
+    <!-- FOOTER -->
+           <footer>
+ <footer>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+    <li><a href=""> About</a></li>
+    <li><a href="">Partnership </a></li>
+    <li><a href=""> Feedback</a></li>
+        </ul>
+      </div>
+         <div class="footer-col">
+           <h4>Explore</h4>
+        <ul>
+    <li><a href="">Hotels</a></li>
+    <li><a href="">Vacation Packages</a></li>
+    <li><a href="">Accomadations</a></li>
+        </ul>
+      </div>
+         <div class="footer-col">
+           <h4> Policies</h4>
+        <ul>
+    <li><a href=""> Terms Of Use</a></li>
+    <li><a href="">Accesibility</a></li>
+    <li><a href="">Privacy</a></li>
+        </ul>
+      </div>
+         <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+   <li><a href="">Support</a></li>
+    <li><a href="">Refund</a></li>
+    <li><a href="">Cancel Flight</a></li>
+        </ul>
+      </div>
+</footer>
   </body>
   <script>
           document

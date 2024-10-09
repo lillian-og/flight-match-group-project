@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="icon"
       type="image/x-icon"
       href="https://icons.iconarchive.com/icons/icons8/ios7/256/Transport-Airplane-Take-Off-icon.png"
     />
-    <title>Sign-Up</title>
+    <title>Flight-Management</title>
     <style>
       * {
         font-family: "Bebas Neue", sans-serif;
@@ -30,10 +33,16 @@
         height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;
-        background-image: linear-gradient(to bottom right, #63B0D0, #63B0D0, #004968, #A85A2A, #E7925D, #E7925D);
+        background-image: linear-gradient(
+          to bottom right,
+          #63b0d0,
+          #004968,
+          #a85a2a,
+          #e7925d
+        );
       }
       div.container {
-        background-color: #FCEAD2;
+        background-color: #fcead2;
         padding: 70px;
         margin: 20px;
         justify-content: center;
@@ -50,13 +59,12 @@
       input {
         float: right;
       }
-
       nav {
         padding: 10px 30px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: #FCEAD2;
+        background-color: #fcead2;
         position: relative;
         height: 60px;
       }
@@ -107,84 +115,108 @@
   </head>
   <body>
     <div class="container patua-one-regular">
-                <nav>
-  <div class="logo" >
-    <img src="/Airplane-About/flight-pics/flightmatch.png" alt="plane" width="100px" height="100px">
-</div>
-    <ul id="menuList">
-    <li><a href="/">Home</a></li>
-    <li><a href="">About</a></li>
-  </ul>
-  <div class="menu-icon">
-<i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
-  </div>
-</nav>
-      <h1>Sign-Up</h1>
-      <form action="/submit-form" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required /><br /><br />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
-        <label for="password">Password*:</label>
-        <input pattern="[A-Z]{1}[a-z]{4,9}[0-9]{2,4}" type="password" id="password" name="password" required /><br />
-        <h3 style="font-size: 0.7rem">*Must have 1 uppercase - 5-9 lowercase - and 2-4 numbers</h3>  <br />
-        <label for="message">Reason for Choosing Us:</label><br />
+      <nav>
+        <div class="logo">
+          <img
+            src="/Airplane-About/flight-pics/flightmatch.png"
+            alt="plane"
+            width="100px"
+            height="100px"
+          />
+        </div>
+        <ul id="menuList">
+          <li><a href="/">Home</a></li>
+          <li><a href="/About-Us">About</a></li>
+        </ul>
+        <div class="menu-icon">
+          <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+      </nav>
+      <h1>Update Flights</h1>
+      <form id="updateFlightForm">
+        <label for="currentNum">Current Flight Number:</label>
+        <input type="text" id="currentNum" required /><br /><br />
+        <label for="currentCount">Current Passenger Count:</label>
+        <input type="text" id="currentCount" required /><br /><br />
+        <label for="newNum">New Flight Number:</label>
+        <input type="text" id="newNum" required /><br /><br />
+        <label for="newCount">New Passenger Count:</label>
+        <input type="text" id="newCount" required /><br /><br />
+        <label for="newPass">Add Passenger(s):</label> <br />
+        <br />
         <textarea
-          id="message"
-          name="message"
+          id="newPass"
+          name="newPass"
           rows="4"
           cols="50"
           required
         ></textarea
         ><br /><br />
-        <input id="submit-button" type="submit" value="Submit" />
+
+        <button type="submit">Update User</button>
       </form>
-      <a href="/user-management"
-        ><button type="button">User Management</button></a
-      >
-              <h3>Already created an account?</h3>
-        <a href="/log-in"
-        ><button type="button">Log In</button></a
-      >
+      <h2>Delete Flight</h2>
+      <form id="delete-flight">
+        <label for="delete-num">Flight Number: </label>
+        <input type="text" name="delete-num" id="delete-num" /> <br />
+        <br />
+        <button type="submit">Delete Flight</button>
+      </form>
+    </div>
+    <div class="container patua-one-regular">
+      <h1>Flights:</h1>
+      <table id="flightsTable">
+        <thead>
+          <tr>
+            <th style="padding: 0 5px 0 0">Number:</th>
+            <br />
+            <th style="padding: 0 0 0 5px">Pass. Count:</th>
+          </tr>
+        </thead>
+        <tbody id="flightTableBody">
+          <!-- data of users will be rendered here -->
+        </tbody>
+      </table>
+      <h3>Add New Flights:</h3>
+      <a href="/add-flights"><button type="button">Create Flight</button></a>
+    </div>
     <script>
       document
-        .getElementById("updateForm")
+        .getElementById("updateFlightForm")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-          const currentName = document.getElementById("currentName").value;
-          const currentEmail = document.getElementById("currentEmail").value;
-          const currentPassword =
-            document.getElementById("currentPassword").value;
-          const newName = document.getElementById("newName").value;
-          const newEmail = document.getElementById("newEmail").value;
-          const newPassword = document.getElementById("newPassword").value;
+          const currentNum = document.getElementById("currentNum").value;
+          const currentCount = document.getElementById("currentCount").value;
+          const newNum = document.getElementById("newNum").value;
+          const newCount = document.getElementById("newCount").value;
+          const newPass = document.getElementById("newPass").value;
 
           try {
             const response = await fetch(
-              `/update-user/${currentName}/${currentEmail}/${currentPassword}`,
+              `/update-flight/${currentNum}/${currentCount}`,
               {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ newName, newEmail, newPassword }),
+                body: JSON.stringify({ newNum, newCount, newPass }),
               }
             );
             const data = await response.json();
             console.log(data);
-            renderUsers();
+            renderFlights();
             // alert("Message is: " + data.message);
           } catch (error) {
             alert("Error updating user: " + error.message);
           }
         });
       document
-        .getElementById("delete-user")
+        .getElementById("delete-flight")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-          const name = document.getElementById("delete-name").value;
+          const num = document.getElementById("delete-num").value;
           try {
-            const response = await fetch(`/user/${name}`, {
+            const response = await fetch(`/flight/${num}`, {
               method: "DELETE",
             });
             if (!response.ok) {
@@ -192,43 +224,43 @@
             }
             const data = await response.text();
             console.log(data);
-            renderUsers();
+            renderFlights();
           } catch (error) {
             console.error("something went wrong" + error.message);
           }
         });
-      async function fetchUsers() {
+      async function fetchFlights() {
         try {
-          const response = await fetch("/users");
+          const response = await fetch("/flights");
           if (!response.ok) {
             throw new Error("Error fetching users. Response not ok");
           }
           // there could be an error getting response/fetching the endpoint
           console.log(response);
-          const users = await response.json();
+          const flights = await response.json();
           // there could be an error parsing the response
           // console.log(users);
-          return users;
+          return flights;
         } catch (error) {
           console.error("There was a problem");
           console.error(error);
         }
       }
 
-      async function renderUsers() {
-        const tableBody = document.getElementById("userTableBody");
-        tableBody.innerHTML = "";
+      async function renderFlights() {
+        const flightTableBody = document.getElementById("flightTableBody");
+        flightTableBody.innerHTML = "";
         try {
-          const users = await fetchUsers();
-          if (Array.isArray(users) && users.length > 0) {
-            users.forEach((user) => {
-              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
-              tableBody.innerHTML += row;
+          const flights = await fetchFlights();
+          if (Array.isArray(flights) && flights.length > 0) {
+            flights.forEach((flight) => {
+              const row = `<tr><td>${flight.num}</td><td>${flight.count}</td></tr>`;
+              flightTableBody.innerHTML += row;
             });
           }
         } catch (error) {}
       }
-      document.addEventListener("DOMContentLoaded", renderUsers);
+      document.addEventListener("DOMContentLoaded", renderFlights);
     </script>
   </body>
 </html>
