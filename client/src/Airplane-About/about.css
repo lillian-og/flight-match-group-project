@@ -90,7 +90,11 @@ p {
 }
 .crew {
   color: #000000;
-  margin-left: 40%;
+  /* margin-left: 40%; */
+  width: 250px;
+  /* border: solid red; */
+  margin: auto;
+  text-align: center;
 }
 
 /* cards flip */
