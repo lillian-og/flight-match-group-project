@@ -1,4 +1,7 @@
 * {
+  font-family: "Patua One", serif;
+  font-weight: 100;
+  font-style: normal;
   margin: 0;
   padding: 0;
 }
@@ -66,7 +69,7 @@ nav ul li a {
   }
 }
 nav ul li a:hover {
-  color: #A85A2A;
+  color: #a85a2a;
 }
 button {
   background-color: #63b0d0;
@@ -93,30 +96,34 @@ button {
 .p {
   color: #ffffff;
   text-align: center;
+  line-height: 2;
   /* font-weight: bold; */
   border-style: solid;
-  border-width: 20px;
-  background-color: #A85A2A;
+  border-width: 15px;
+  background-color: #a85a2a;
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 30px;
   margin-bottom: 30;
+  padding: 10px;
 }
 .crew {
   color: #000000;
   text-align: center;
+  width: 250px;
+  margin: auto;
   /* margin-left: 27%; */
 }
 
 /* terms and conditions */
-.terms-conditions{
+.terms-conditions {
   /* text-align: center; */
   margin-left: 50px;
   margin-top: 10%;
 }
-/* .h1 {
+.t-c {
   margin-left: 70px;
-} */
+}
 /* cards flip */
 .flip-cards {
   display: flex;
@@ -128,7 +135,7 @@ button {
   width: 160px;
   height: 230px;
   margin-left: 10%;
-  border: 2px solid #000000;
+  border: 3px solid #63b0d0;
   perspective: 1000px; /* gives a 3d effect */
 }
 
@@ -226,8 +233,43 @@ button {
 
 /* back side of card */
 .flip-card-back {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  color: #000000;
   transform: rotateY(180deg);
 }
 /* end of card flip */
+
+/* FOOTER */
+
+footer,
+#copyright {
+  background: #004968;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding: 20px 5%;
+  justify-content: space-between;
+}
+footer ul li {
+  list-style-type: none;
+}
+footer ul li a {
+  text-decoration: none;
+  color: white;
+  line-height: 3;
+  cursor: pointer;
+}
+footer ul li a:hover {
+  color: #a85a2a;
+}
+h4 {
+  color: #fcead2;
+  font-weight: bold;
+  text-decoration: overline;
+}
+#Copyright {
+  color: white;
+}
+
+/* FOOTER ENDS */
