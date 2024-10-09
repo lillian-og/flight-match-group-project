@@ -5,11 +5,14 @@ const path = require('path');
 const fs = require('fs').promises;
 // Initialize Express application
 const app = express();
+//IMPORTANT Run npm i @turf/turf
+const turf = require('@turf/turf')
 
 // Define paths
 const clientPath = path.join(__dirname, '..', 'client/src');
 const dataPath = path.join(__dirname, 'data', 'users.json');
 const flightsPath = path.join(__dirname, 'data', 'flights.json');
+const flightDataPath = path.join(__dirname, 'data', 'flightData.json');
 const serverPublic = path.join(__dirname, 'public');
 // Middleware setup
 app.use(express.static(clientPath)); // Serve static files from client directory
