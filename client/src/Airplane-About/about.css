@@ -1,9 +1,14 @@
-* {
+/* * {
   font-family: "Patua One", serif;
   font-weight: 100;
   font-style: normal;
   margin: 0;
   padding: 0;
+} */
+* {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 html,
 body {
@@ -119,7 +124,8 @@ button {
 .terms-conditions {
   /* text-align: center; */
   margin-left: 50px;
-  margin-top: 10%;
+  margin-top: 5%;
+  padding-bottom: 30px;
 }
 .t-c {
   margin-left: 70px;
@@ -273,3 +279,30 @@ h4 {
 }
 
 /* FOOTER ENDS */
+
+/* plane */
+
+.plane {
+  position: absolute;
+  top: 200px;
+  width: 50px;
+  height: 50px;
+  /* background-image: url("/client/src/pictures/plane.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: red;
+  /* border: solid red; */
+  /* clip-path: polygon(50% 0%, 0% 100%, 100% 100%); */
+  animation: fly 3s linear forwards; /* keeps repeating */
+}
+
+@keyframes fly {
+  0% {
+    left: -150px; /* starts on the left side of the screen */
+    top: 300px; /* starts at the middle of the screen */
+  }
+  100% {
+    left: 35%; /* moves to the right */
+    top: -150px; /* moves to the top of the screen */
+  }
+}
