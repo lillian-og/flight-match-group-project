@@ -10,6 +10,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
       body {
     background-color:rgb(247, 219, 168);
+    height: fit-content;
 }
 
 #where {
@@ -65,7 +66,7 @@ div.search {
 
 .search {
     --padding: 14px;
-
+  margin: 20px;
     width: max-content;
     display:flex;
     align-items: center;
@@ -192,16 +193,19 @@ button {
         background: #f6f6f6;
         transition: background-color 0.25s;
         border: none;
+        margin: 20px;
       }
       .submit-button:hover {
         background-color: orange;
         transition: background-color 0.25s;
         cursor: pointer;
       }
-      #flights-container {
+      #flight-finder {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        height: auto;
+        min-height: 20%;
       }
 
     </style>
