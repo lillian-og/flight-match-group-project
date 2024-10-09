@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Info</title>
+  </head>
+  <body>
+    <h1>User Information</h1>
+    <div id="userInfo">
+      <!-- User info will be populated here -->
+    </div>
+    <button id="logoutButton">Logout</button>
+    <script>
+      // Get user from local storage
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (user) {
+        const userInfoDiv = document.getElementById("userInfo");
+        userInfoDiv.innerHTML = `
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>Password:</strong> ${user.password}</p>
+        <p><strong>Messages:</strong></p>
+        <ul>
+          ${user.messages.map((msg) => `<li>${msg}</li>`).join("")}
+        </ul>
+      `;
+      } else {
+        // Redirect to sign-in page if no user is found in local storage
+        window.location.href = "/sign-up";
+      }
+      // Logout functionality
+      document.getElementById("logoutButton").addEventListener("click", () => {
+        localStorage.removeItem("currentUser");
+        window.location.href = "/sign-up";
+      });
+    </script>
+  </body>
+</html>

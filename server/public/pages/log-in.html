@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
-      rel="stylesheet"
-    />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link
       rel="icon"
       type="image/x-icon"
@@ -16,11 +15,11 @@
     />
     <title>Log-In</title>
     <style>
-      .patua-one-regular {
-        font-family: "Patua One", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
+     .bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
       body,
       html {
         display: flex;
@@ -51,26 +50,88 @@
       input {
         float: right;
       }
+      nav {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FCEAD2;
+  position: relative;
+  height: 60px;
+}
+/* Makes links go horizontal and spaces it out */
+nav ul {
+  display: flex;
+  gap: 35px;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+.menu-icon {
+  display: none;
+}
+.menu-icon i {
+  color: white;
+  font-size: 25px;
+}
+@media (max-width: 600px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    background: #004968;
+    /*     Puts it close together */
+    gap: 0;
+    overflow: hidden;
+  }
+  nav ul li {
+    padding: 10px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+nav ul li a:hover {
+  color: red;
+}
     </style>
   </head>
   <body>
     <div class="container patua-one-regular">
+          <nav>
+  <div class="logo" >
+    <img src="/Airplane-About/flight-pics/flightmatch.png" alt="plane" width="100px" height="100px">
+</div>
+    <ul id="menuList">
+    <li><a href="/">Home</a></li>
+    <li><a href="">About</a></li>
+  </ul>
+  <div class="menu-icon">
+<i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</nav>
       <h1>Log-in</h1>
-      <form action="/submit-form" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required /><br /><br />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" required /><br /><br />
-        <input id="submit-button" type="submit" value="Submit" />
+      <form id="log-in" action="/log-in" method="POST">
+        <label class="bebas-neue-regular" for="name">Name:</label>
+        <input class="bebas-neue-regular" type="text" id="name" name="name" required /><br /><br />
+        <label class="bebas-neue-regular" for="password">Password:</label>
+        <input class="bebas-neue-regular" pattern="[A-Z]{1}[a-z]{4,9}[0-9]{2,4}" type="password" id="password" name="password" required /><br /><br />
+        <input id="log-in-button" type="submit" value="Log-in" />
       </form>
       <a href="/user-management"
-        ><button type="button">User Management</button></a
+        ><button class="bebas-neue-regular" type="button">User Management</button></a
       >
-        <h3>New to this Site?</h3>
+        <h3 class="bebas-neue-regular">New to this Site?</h3>
         <a href="/sign-up"
-        ><button type="button">Sign Up</button></a
+        ><button class="bebas-neue-regular" type="button">Sign Up</button></a
       >
     <script>
       document
@@ -123,6 +184,44 @@
             console.error("something went wrong" + error.message);
           }
         });
+              document
+        .getElementById("log-in")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("log-in-name").value;
+          const password = document.getElementById("log-in-password").value;
+
+          try {
+            const response = await fetch("/sign-in", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ name, password }),
+            });
+
+            if (!response.ok) {
+              throw new Error("User not found");
+            }
+
+            const user = await response.json();
+
+            // Save user to local storage
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            // Redirect to user-info page
+            window.location.href = "/user-info";
+          } catch (error) {
+            alert("Sign-In Failed: " + error.message);
+          }
+        });
+              document.addEventListener("DOMContentLoaded", renderUsers);
+      document.addEventListener("DOMContentLoaded", () => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+          window.location.href = "/user-info";
+        }
+      });
       async function fetchUsers() {
         try {
           const response = await fetch("/users");

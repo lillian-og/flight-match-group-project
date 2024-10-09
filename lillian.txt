@@ -1,0 +1,45 @@
+10-1-24
+
+My role is project leader and main html coordinator. We were just trying to figure out all the git stuff today for the most part. Hopefully tomorrow I'm looking forward to 
+working on actually getting some of the pages up and having a rough draft of the layout just to see where it's headed.
+The biggest challenge today was trying to find somewhere to start and also figuring out all the git stuff. Working in a big group is hard, let alone figuring out 
+how to navigate things I dont really understand with a group. My goals for my group are to hopefully work cohesively and have a smooth sailing 
+working time and also having a fully functional website at the end of these next couple weeks.
+
+10-2-24 
+
+What new challenge arose today ?
+- I tried to use bootstrap to be able to style the front page now I just need to figure out how to get the local host to run. It wont for some reason. I keep getting
+errors in my terminal.
+
+-1 source youre using to research?
+trip advisor and the bootstrap website.
+
+-1 source youre using to collaborate w your teammates? 
+github.
+
+10-3-2024
+
+1. Do you believe youre giving your best effort to the team? 
+- Yes, we've had a lot of git problems so it's been hard to get started but I feel like I'm finally getting in a good groove of things
+
+2. what is one way you hope to improve your site by the end of the week?
+- I hope to have all 3 pages connected and looking decently presentable by the end of tomorrow.
+
+3. what is one technical problem holding you back?
+- git is really confusing sometimes and pushing and pulling has problems sometimes with everyones code. 
+
+4. what is one way you can help support your team moving forward?
+- I feel like asking what everyone is working on and maybe giving more live feedback during the workday would help.
+
+
+10/08/2024
+
+1. what is one topic you had to revisit from last year? 
+- lots of css aspects that I forgot existed. I had to use felx box quite a bit.
+
+2. what is one real life website that inspired you?
+-Tripadvisor!! I took so much inspiration from that page.
+
+3. Have you considered color blindness in your color palette?
+-No we have not.
