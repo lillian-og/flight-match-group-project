@@ -1,5 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background-color: #63B0D0;
+    background-color: #fcead2;
 }
 
 #where {
@@ -29,11 +34,19 @@ body {
 .pictures {
     height: 175px;
     width: 250px;
-    border: 10px solid rgb(249, 227, 186);   
+  border-style: solid;
+  border-width: 10px;
+  border-image: linear-gradient(to bottom right, #63B0D0, #004968, #A85A2A, #E7925D) 1;
+   
+}
+
+.pictures:hover{
+ transform: translateY(-10px);
 }
 
 .picture-wrapper {
     text-align: center;
+    
 }
 
 .bebas-neue-regular {
@@ -149,4 +162,12 @@ button {
   overflow: hidden; */
 
   transition: all 0.5s;
+}
+
+#flight-finder {
+  border: solid red;
+  height: 10rem;
+}
+#slogan {
+text-align: center;
 }
