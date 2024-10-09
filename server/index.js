@@ -450,7 +450,7 @@ app.put('/update-flight/:currentNum/:currentCount', async (req, res) => {
             if (flightIndex === -1) {
                 return res.status(404).json({ message: "User not found" })
             }
-            flights[flightIndex] = { ...flights[flightIndex], num: newNum, count: newCount, messages: currentPass + newPass };
+            flights[flightIndex] = { ...flights[flightIndex], num: newNum, count: newCount, messages: currentPass + ", " + newPass };
             console.log(flights);
             await fs.writeFile(flightsPath, JSON.stringify(flights, null, 2));
 
