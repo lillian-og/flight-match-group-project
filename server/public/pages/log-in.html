@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://icons.iconarchive.com/icons/icons8/ios7/256/Transport-Airplane-Take-Off-icon.png"
+    />
+    <title>Log-In</title>
+    <style>
+     .bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+      body,
+      html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      body {
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: linear-gradient(to bottom right, #63B0D0, #004968, #A85A2A, #E7925D);
+      }
+      div.container {
+        background-color: #FCEAD2;
+        padding: 70px;
+        margin: 20px;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid black; */
+        border-radius: 50px;
+        box-shadow: 10px 7px 15px black;
+        /* height: 50vh; */
+      }
+      form {
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        float: right;
+      }
+      nav {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FCEAD2;
+  position: relative;
+  height: 60px;
+}
+/* Makes links go horizontal and spaces it out */
+nav ul {
+  display: flex;
+  gap: 35px;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+.menu-icon {
+  display: none;
+}
+.menu-icon i {
+  color: white;
+  font-size: 25px;
+}
+@media (max-width: 600px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    background: #004968;
+    /*     Puts it close together */
+    gap: 0;
+    overflow: hidden;
+  }
+  nav ul li {
+    padding: 10px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+nav ul li a:hover {
+  color: red;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container patua-one-regular">
+          <nav>
+  <div class="logo" >
+    <img src="/Airplane-About/flight-pics/flightmatch.png" alt="plane" width="100px" height="100px">
+</div>
+    <ul id="menuList">
+    <li><a href="/">Home</a></li>
+    <li><a href="">About</a></li>
+  </ul>
+  <div class="menu-icon">
+<i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+  </div>
+</nav>
+      <h1>Log-in</h1>
+      <form id="log-in" action="/log-in" method="POST">
+        <label class="bebas-neue-regular" for="name">Name:</label>
+        <input class="bebas-neue-regular" type="text" id="name" name="name" required /><br /><br />
+        <label class="bebas-neue-regular" for="password">Password:</label>
+        <input class="bebas-neue-regular" pattern="[A-Z]{1}[a-z]{4,9}[0-9]{2,4}" type="password" id="password" name="password" required /><br /><br />
+        <input id="log-in-button" type="submit" value="Log-in" />
+      </form>
+      <a href="/user-management"
+        ><button class="bebas-neue-regular" type="button">User Management</button></a
+      >
+        <h3 class="bebas-neue-regular">New to this Site?</h3>
+        <a href="/sign-up"
+        ><button class="bebas-neue-regular" type="button">Sign Up</button></a
+      >
+    <script>
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const currentName = document.getElementById("currentName").value;
+          const currentEmail = document.getElementById("currentEmail").value;
+          const currentPassword =
+            document.getElementById("currentPassword").value;
+          const newName = document.getElementById("newName").value;
+          const newEmail = document.getElementById("newEmail").value;
+          const newPassword = document.getElementById("newPassword").value;
+
+          try {
+            const response = await fetch(
+              `/update-user/${currentName}/${currentEmail}/${currentPassword}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ newName, newEmail, newPassword }),
+              }
+            );
+            const data = await response.json();
+            console.log(data);
+            renderUsers();
+            // alert("Message is: " + data.message);
+          } catch (error) {
+            alert("Error updating user: " + error.message);
+          }
+        });
+      document
+        .getElementById("delete-user")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("delete-name").value;
+          try {
+            const response = await fetch(`/user/${name}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Error with network");
+            }
+            const data = await response.text();
+            console.log(data);
+            renderUsers();
+          } catch (error) {
+            console.error("something went wrong" + error.message);
+          }
+        });
+              document
+        .getElementById("log-in")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("log-in-name").value;
+          const password = document.getElementById("log-in-password").value;
+
+          try {
+            const response = await fetch("/sign-in", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ name, password }),
+            });
+
+            if (!response.ok) {
+              throw new Error("User not found");
+            }
+
+            const user = await response.json();
+
+            // Save user to local storage
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            // Redirect to user-info page
+            window.location.href = "/user-info";
+          } catch (error) {
+            alert("Sign-In Failed: " + error.message);
+          }
+        });
+              document.addEventListener("DOMContentLoaded", renderUsers);
+      document.addEventListener("DOMContentLoaded", () => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+          window.location.href = "/user-info";
+        }
+      });
+      async function fetchUsers() {
+        try {
+          const response = await fetch("/users");
+          if (!response.ok) {
+            throw new Error("Error fetching users. Response not ok");
+          }
+          // there could be an error getting response/fetching the endpoint
+          console.log(response);
+          const users = await response.json();
+          // there could be an error parsing the response
+          // console.log(users);
+          return users;
+        } catch (error) {
+          console.error("There was a problem");
+          console.error(error);
+        }
+      }
+
+      async function renderUsers() {
+        const tableBody = document.getElementById("userTableBody");
+        tableBody.innerHTML = "";
+        try {
+          const users = await fetchUsers();
+          if (Array.isArray(users) && users.length > 0) {
+            users.forEach((user) => {
+              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
+              tableBody.innerHTML += row;
+            });
+          }
+        } catch (error) {}
+      }
+      document.addEventListener("DOMContentLoaded", renderUsers);
+    </script>
+  </body>
+</html>

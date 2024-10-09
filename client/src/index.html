@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airplane Site</title>
+
+    <style>
+      /* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"); */
+      body {
+    background-color: #63B0D0;
+}
+
+#where {
+    text-align: center;
+}
+
+.logo {
+    /* border: solid red; */
+    /* background-color: white; */
+}
+
+#logo-picture {
+    /* border: solid magenta; */
+    /* background-color: #ffddff; */
+}
+
+.places-to-go {
+    display: flex;
+    justify-content: space-between;
+    /* margin-left: 7vw; */
+    /* width: 450px; */
+    margin: auto;
+    /* height: 175px; */
+    border: #FCEAD2 ;
+}
+
+.pictures {
+    height: 175px;
+    width: 250px;
+    border: 10px solid rgb(249, 227, 186);   
+}
+
+.picture-wrapper {
+    text-align: center;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+div.search {
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+
+.search {
+    --padding: 14px;
+
+    width: max-content;
+    display:flex;
+    align-items: center;
+    padding:var(--padding);
+    border-radius: 28px;
+    background: #f6f6f6;
+    transition: box-shadow 0.25s;   
+    
+}
+
+.search:focus-within {
+    box-shadow: 0 0 2px rbga (0, 0, 0, 0.75);
+}
+
+.search-input {
+    font-size:  16px;
+    font-family: 'Lexend', sans serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 300px;
+}
+
+.search-input::placeholder, .search-icon {
+ color: rbga(0, 0, 0, 0.5);
+}
+
+nav {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #004968;
+  position: relative;
+  height: 60px;
+}
+/* Makes links go horizontal and spaces it out */
+nav ul {
+  display: flex;
+  gap: 35px;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+.menu-icon {
+  display: none;
+}
+.menu-icon i {
+  color: white;
+  font-size: 25px;
+}
+@media (max-width: 600px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    background: #004968;
+    /*     Puts it close together */
+    gap: 0;
+    overflow: hidden;
+  }
+  nav ul li {
+    padding: 10px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+nav ul li a:hover {
+  color: #A85A2A;
+}
+button {
+  background-color: #63b0d0;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 1px;
+}
+#menuList {
+  /* max-height: 0;
+  overflow: hidden; */
+
+  transition: all 0.5s;
+}
+
+    </style>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img
+          id="logo-picture"
+          src="pictures/flightmatch.png"
+          alt=""
+          width="100px"
+          height="100px"
+        />
+      </div>
+      <ul id="menuList">
+        <li><a href="">Home</a></li>
+        <li><a href="/About-Us">About</a></li>
+        <li>
+          <a href="/log-in"><button>LogIn/Signup</button></a>
+        </li>
+      </ul>
+      <div class="menu-icon">
+        <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+      </div>
+    </nav>
+
+    <!-- <nav>
+       <h1 class="bebas-neue-regular">Flight match</h1>
+    <a class="bebas-neue-regular" href="/sign-up"><button>Go to Form</button> </a>
+      </nav> -->
+
+    <h1 class="bebas-neue-regular" id="where">Where to ?</h1>
+
+    <form id="search" action="">
+      <div class="search">
+        <span class="search-icon material-symbols-outlined">search</span>
+        <input class="search-input" type="search" placeholder="Search" />
+      </div>
+    </form>
+
+    <div class="places-to-go">
+      <div class="picture-wrapper">
+        <img class="pictures" src="pictures\chicago.jpg" alt="chicago" />
+        <p class="bebas-neue-regular">Chicago</p>
+      </div>
+
+      <div class="picture-wrapper">
+        <img class="pictures" src="pictures\la.jpg" alt="la" />
+        <p class="bebas-neue-regular">Los Angles</p>
+      </div>
+
+      <div class="picture-wrapper">
+        <img class="pictures" src="pictures\las-vegas.jpg" alt="las-vegas" />
+        <p class="bebas-neue-regular">Las Vegas</p>
+      </div>
+
+      <div class="picture-wrapper">
+        <img class="pictures" src="pictures\new-york.jpg" alt="new-york" />
+        <p class="bebas-neue-regular">New York</p>
+      </div>
+
+      <div class="picture-wrapper">
+        <img class="pictures" src="pictures\orlando.jpg" alt="orlando" />
+        <p class="bebas-neue-regular">Orlando</p>
+      </div>
+    </div>
+  </body>
+  <script>
+          document
+        .getElementById("submit-locations")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fromCity = document.getElementById("from-city").value;
+          const fromState = document.getElementById("from-state").value;
+          // const toCity = document.getElementById("to-city").value;
+          const toState = document.getElementById("to-state").value;
+          try {
+            const response = await fetch(`/submitLocations/${fromCity}/${fromState}/${toState}`);
+            const data = await response.json();
+            console.log(data[0])
+            for(i = 0; i<3; i++){
+            let newDiv = document.createElement("div");
+            let titleHOne = document.createElement("h2");
+            let airlinePara = document.createElement("p");
+            let cityPara = document.createElement("p");
+            let idPara = document.createElement("p");
+            let milesPara = document.createElement("p");
+            let timePara = document.createElement("p");
+            let costPara = document.createElement("p");
+            let toCity = data[i].City
+            try{
+            const response = await fetch(`/getLocoInfo/${fromCity}/${fromState}/${toState}/${toCity}`);
+            const locoData = await response.json();
+            const titleNode = document.createTextNode(`${fromCity}, ${fromState} to ${toState}, ${toCity}`);
+            const airlineNode = document.createTextNode("Airline: "+ data[i].Airline);
+            const cityNode = document.createTextNode("City: "+ toCity);
+            const idNode = document.createTextNode("Flight ID: "+ data[i].FlightID);
+            let roundedMiles = Math.round((locoData * 100))/100
+            let estimatedTime = Math.round(((roundedMiles/547)*100))/100
+            let estimatedCost = Math.round(((roundedMiles*0.15)*100))/100
+            const milesNode = document.createTextNode("Miles: "+ roundedMiles);
+            const timeNode = document.createTextNode("Time: "+ estimatedTime + " hours");
+            const costNode = document.createTextNode("Cost: $"+ estimatedCost);
+            titleHOne.appendChild(titleNode)
+            airlinePara.appendChild(airlineNode);
+            cityPara.appendChild(cityNode);
+            idPara.appendChild(idNode);
+            milesPara.appendChild(milesNode);
+            timePara.appendChild(timeNode)
+            costPara.appendChild(costNode)
+            newDiv.appendChild(titleHOne)
+            newDiv.appendChild(airlinePara);
+            newDiv.appendChild(cityPara);
+            newDiv.appendChild(idPara);
+            newDiv.appendChild(milesPara);
+            newDiv.appendChild(timePara)
+            newDiv.appendChild(costPara)
+            newDiv.classList.add("flight-info-box");
+            const currentDiv = document.getElementById("div1");
+            document.body.insertBefore(newDiv, currentDiv);}
+            catch{
+              alert("Error Getting Flight Information 2: " + error.message);
+            }
+            }
+          } catch (error) {
+            alert("Error Getting Flight Information: " + error.message);
+          }
+        });
+  </script>
+</html>

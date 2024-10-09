@@ -1,0 +1,23 @@
+10/1/2024
+I am backend developer, i will be working with the javascript index file to create to various forms and other things requiring js.
+worked on getting the git repo set up as well as creating a new branch for myself and merging it with the main branch.
+The biggest challenge of today was generally figuring out github as it can be very confusing.
+My goals for the project are to create the functioning system for any forms or other js things that need to be created.
+Tomorrow I will begin creating the sign-up/log-in form.
+
+10/2/2024
+A challenge that arose was that i had to change all the value names as well as adding a password to the sign up and user management.
+I mainly use w3schools to answer any questions I have as well as asking my teammates for advice.
+Using git helps us see our teams changes as well as make corrections or other edits to the code, also just talking.
+
+10/3/2024
+I believe I am doing as much as I can with the time given.
+I can improve the site by making the sign up and log in more different and work.
+1 challenge i have faced is that of having to make sure all the paths and values are the same across all the code.
+I can support my team by making good progress on this project and ensuring that I do what is needed.
+
+10/8/2024
+Some css styling like box shadow.
+just some general flight match sites have inspired us, idk about specific ones.
+i have not considered how people with disabilies might view the site, if we were to take that into account, we might have to-
+-change some colors or fonts in order to make it more accessible.

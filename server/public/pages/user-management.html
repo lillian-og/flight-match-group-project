@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://icons.iconarchive.com/icons/icons8/ios7/256/Transport-Airplane-Take-Off-icon.png"
+    />
+    <title>User-Management</title>
+    <style>
+      .bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+      body,
+      html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      body {
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: linear-gradient(
+          to bottom right,
+          #63b0d0,
+          #004968,
+          #a85a2a,
+          #e7925d
+        );
+      }
+      div.container {
+        background-color: #fcead2;
+        padding: 70px;
+        margin: 20px;
+        justify-content: center;
+        align-items: center;
+        /* border: 1px solid black; */
+        border-radius: 50px;
+        box-shadow: 10px 7px 15px black;
+        /* height: 50vh; */
+      }
+      form {
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        float: right;
+      }
+      nav {
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fcead2;
+        position: relative;
+        height: 60px;
+      }
+      /* Makes links go horizontal and spaces it out */
+      nav ul {
+        display: flex;
+        gap: 35px;
+      }
+      nav ul li {
+        list-style-type: none;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: black;
+      }
+      .menu-icon {
+        display: none;
+      }
+      .menu-icon i {
+        color: white;
+        font-size: 25px;
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          text-align: center;
+          background: #004968;
+          /*     Puts it close together */
+          gap: 0;
+          overflow: hidden;
+        }
+        nav ul li {
+          padding: 10px;
+        }
+        .menu-icon {
+          display: block;
+          cursor: pointer;
+        }
+      }
+      nav ul li a:hover {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container patua-one-regular">
+      <nav>
+        <div class="logo">
+          <img
+            src="/Airplane-About/flight-pics/flightmatch.png"
+            alt="plane"
+            width="100px"
+            height="100px"
+          />
+        </div>
+        <ul id="menuList">
+          <li><a href="/">Home</a></li>
+          <li><a href="/About-Us">About</a></li>
+        </ul>
+        <div class="menu-icon">
+          <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+      </nav>
+      <h1>Update User</h1>
+      <form id="updateForm">
+        <label for="currentName">Current name:</label>
+        <input type="text" id="currentName" required /><br /><br />
+        <label for="currentEmail">Current email:</label>
+        <input type="text" id="currentEmail" required /><br /><br />
+        <label for="currentPassword">Current Password:</label>
+        <input type="text" id="currentPassword" required /><br /><br />
+        <label for="newName">New name:</label>
+        <input type="text" id="newName" required /><br /><br />
+        <label for="newEmail">New email:</label>
+        <input type="text" id="newEmail" required /><br /><br />
+        <label for="newPassword">New Password:</label>
+        <input type="text" id="newPassword" required /><br /><br />
+
+        <button type="submit">Update User</button>
+      </form>
+    </div>
+    <div class="container patua-one-regular">
+      <h2>Delete User</h2>
+      <form id="delete-user">
+        <label for="delete-name">Name: </label>
+        <input type="text" id="delete-name" /> <br />
+        <br />
+        <button type="submit">Delete User</button>
+      </form>
+      <h3>Already created an account?</h3>
+      <a href="/log-in"><button type="button">Log In</button></a>
+      <h3>New to this Site?</h3>
+      <a href="/sign-up"><button type="button">Sign Up</button></a>
+    </div>
+    <div class="container patua-one-regular">
+      <h1>Users:</h1>
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th style="padding: 0 5px 0 0">Name:</th>
+            <br />
+            <th style="padding: 0 0 0 5px">Email:</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <!-- data of users will be rendered here -->
+        </tbody>
+      </table>
+      <h3>Update Flight Manifests</h3>
+      <a href="/flight-management"><button type="button">Flight Management</button></a>
+    </div>
+    <script>
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const currentName = document.getElementById("currentName").value;
+          const currentEmail = document.getElementById("currentEmail").value;
+          const currentPassword =
+            document.getElementById("currentPassword").value;
+          const newName = document.getElementById("newName").value;
+          const newEmail = document.getElementById("newEmail").value;
+          const newPassword = document.getElementById("newPassword").value;
+
+          try {
+            const response = await fetch(
+              `/update-user/${currentName}/${currentEmail}/${currentPassword}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ newName, newEmail, newPassword }),
+              }
+            );
+            const data = await response.json();
+            console.log(data);
+            renderUsers();
+            // alert("Message is: " + data.message);
+          } catch (error) {
+            alert("Error updating user: " + error.message);
+          }
+        });
+      document
+        .getElementById("delete-user")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("delete-name").value;
+          try {
+            const response = await fetch(`/user/${name}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Error with network");
+            }
+            const data = await response.text();
+            console.log(data);
+            renderUsers();
+          } catch (error) {
+            console.error("something went wrong" + error.message);
+          }
+        });
+      async function fetchUsers() {
+        try {
+          const response = await fetch("/users");
+          if (!response.ok) {
+            throw new Error("Error fetching users. Response not ok");
+          }
+          // there could be an error getting response/fetching the endpoint
+          console.log(response);
+          const users = await response.json();
+          // there could be an error parsing the response
+          // console.log(users);
+          return users;
+        } catch (error) {
+          console.error("There was a problem");
+          console.error(error);
+        }
+      }
+
+      async function renderUsers() {
+        const tableBody = document.getElementById("userTableBody");
+        tableBody.innerHTML = "";
+        try {
+          const users = await fetchUsers();
+          if (Array.isArray(users) && users.length > 0) {
+            users.forEach((user) => {
+              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
+              tableBody.innerHTML += row;
+            });
+          }
+        } catch (error) {}
+      }
+      document.addEventListener("DOMContentLoaded", renderUsers);
+    </script>
+  </body>
+</html>

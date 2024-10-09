@@ -1,0 +1,273 @@
+* {
+  font-family: "Patua One", serif;
+  font-weight: 100;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  background-color: #fcead2;
+  width: 100%;
+  height: 100%;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* NAV */
+nav {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #004968;
+  position: relative;
+  height: 60px;
+}
+/* Makes links go horizontal and spaces it out */
+nav ul {
+  display: flex;
+  gap: 35px;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+.menu-icon {
+  display: none;
+}
+.menu-icon i {
+  color: white;
+  font-size: 25px;
+}
+@media (max-width: 600px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    text-align: center;
+    background: #004968;
+    /*     Puts it close together */
+    gap: 0;
+    overflow: hidden;
+  }
+  nav ul li {
+    padding: 10px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+}
+nav ul li a:hover {
+  color: #A85A2A;
+}
+button {
+  background-color: #63b0d0;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 1px;
+}
+#menuList {
+  /* max-height: 0;
+  overflow: hidden; */
+
+  transition: all 0.5s;
+}
+/* END OF NAV */
+
+/* Classes */
+.wfm {
+  color: #000000;
+  text-align: center;
+  /* margin-left: 42%; */
+  margin-top: 30px;
+}
+.p {
+  color: #ffffff;
+  text-align: center;
+  /* font-weight: bold; */
+  border-style: solid;
+  border-width: 20px;
+  background-color: #a85a2a;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 30px;
+  margin-bottom: 30;
+}
+.crew {
+  color: #000000;
+  text-align: center;
+  width: 250px;
+  margin: auto;
+  /* margin-left: 27%; */
+}
+
+/* terms and conditions */
+.terms-conditions {
+  /* text-align: center; */
+  margin-left: 50px;
+  margin-top: 10%;
+}
+.t-c {
+  margin-left: 70px;
+}
+/* cards flip */
+.flip-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* backside of the card */
+.flip-card {
+  background-color: rgb(255, 255, 255);
+  width: 160px;
+  height: 230px;
+  margin-left: 10%;
+  border: 3px solid #63b0d0;
+  perspective: 1000px; /* gives a 3d effect */
+}
+
+#flip-card-one {
+  /* position: absolute; */
+  /* top: 30%; */
+  width: 160px;
+  height: 230px;
+  margin-top: 40px;
+  /* margin-right: 10%; */
+  flex-grow: 1;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+#flip-card-two {
+  width: 160px;
+  height: 230px;
+  margin-top: 40px;
+  /* margin-right: 10%; */
+  flex-grow: 1;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+#flip-card-three {
+  width: 160px;
+  height: 230px;
+  margin-top: 40px;
+  flex-grow: 1;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+#flip-card-four {
+  width: 160px;
+  height: 230px;
+  margin-top: 40px;
+  /* margin-left: 10%; */
+  flex-grow: 1;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+#flip-card-five {
+  width: 160px;
+  height: 230px;
+  margin-top: 40px;
+  /* margin-left: 10%; */
+  flex-grow: 1;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+#flip-card-six {
+  width: 160px;
+  height: 230px;
+  margin-top: 40px;
+  flex-grow: 1;
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+/* This container positions the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1.08s; /* how quick or slow the transiton is */
+  transform-style: preserve-3d; /* adds the text or background-color behind the image createing a 3D transformstion*/
+}
+
+/* Flips horazontally when mouse is moved to the flip container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* makes the back element invisible when being rotated */
+}
+
+/* Style the front side (fallback if image is missing)?? */
+.flip-card-front {
+  background-color: #ffffff;
+  color: black; /* look more into this */
+}
+
+/* back side of card */
+.flip-card-back {
+  background-color: #ffffff;
+  color: #000000;
+  transform: rotateY(180deg);
+}
+/* end of card flip */
+
+/* FOOTER */
+
+footer {
+  background: #a85a2a;
+  height: 40vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20%;
+}
+footer ul {
+  padding: 20px;
+}
+
+footer ul li {
+  list-style-type: none;
+}
+footer ul li a {
+  text-decoration: none;
+  color: #63b0d0;
+  line-height: 3.5;
+  cursor: pointer;
+}
+footer ul li a:hover {
+  background-color: red;
+}
+footer li a {
+  margin: 20px;
+}
+#section {
+  font-weight: 900;
+  text-decoration: overline;
+  color: white;
+}
