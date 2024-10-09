@@ -1,13 +1,18 @@
 [
   {
-    "name": "WASTHATTHEBITEOF87!?",
-    "email": "bite87@gmail.com",
-    "password": "Hahalol87",
+    "name": "joe",
+    "email": "joe@gmail.com",
+    "password": "Joejoejoe123",
     "messages": [
-      null,
-      "WAS THAT THE BITE OF 87!?!!?",
-      null,
-      null
+      "plane"
+    ]
+  },
+  {
+    "name": "testingtesting",
+    "email": "testing@email.com",
+    "password": "Testing1123",
+    "messages": [
+      "testing testing 123"
     ]
   }
 ]

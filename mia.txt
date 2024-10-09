@@ -7,3 +7,18 @@ role in this project.
 The biggest challenge was figuring out what everyone roles were gonna be and how to get all of us to be able to merge in the main branch.
 My goal is to be able to communicate with my teammates and learn to work with each other.
 I will work on the framework for the About me page as well as research with maya hopefully.
+
+10/2/24 Journal
+A new challenge that arose was getting the live server to work so me and Maya can work on the
+about us file at the same time.
+A resource im using is just w3schools for some thing I might've forgotten to do.
+A resource im using to collarborate better with my teammates is gmail chats.
+
+10/3/24 Journal
+
+I do believe I am giving my best effort as I am always communicating and making sure 
+I have everyones opinion.
+I am hoping to have the About us page at least drafted out.
+One challenge is the layout and color scheme as well as trying to make sure that it cooridnates with the main page as well as 
+transfering the draft from codepen to the Vs code.
+I can support my team by communicating with them and ensuring everyone approves of the idea.
