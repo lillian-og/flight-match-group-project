@@ -22,3 +22,15 @@ I am hoping to have the About us page at least drafted out.
 One challenge is the layout and color scheme as well as trying to make sure that it cooridnates with the main page as well as 
 transfering the draft from codepen to the Vs code.
 I can support my team by communicating with them and ensuring everyone approves of the idea.
+
+10/8/24
+
+One topic I had to really revisit is flex-box and grid to able to get they layout of things for the page. One real word refference
+is what companys wish to give the customers. No we didn't take into consideration how people with sight disabilities may see our page. And if we were 
+I would want to see it with a black and white filter to understand how they would view and what colors can combine well.
+
+10/9/24 
+
+No there wasn't any disgagreements I feel like but if there was we all communicated to come together and figure out the issue 
+and how to agree. I'm honestly most proud of Maya's airplane animation as I do feel like it does add a cool effect towards the page. I designed
+the navigation bar and footer and ensured that it was settled on all the pages .
