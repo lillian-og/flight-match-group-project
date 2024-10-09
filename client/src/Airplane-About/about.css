@@ -69,7 +69,7 @@ nav ul li a {
   }
 }
 nav ul li a:hover {
-  color: #A85A2A;
+  color: #a85a2a;
 }
 button {
   background-color: #63b0d0;
@@ -96,14 +96,16 @@ button {
 .p {
   color: #ffffff;
   text-align: center;
+  line-height: 2;
   /* font-weight: bold; */
   border-style: solid;
-  border-width: 20px;
+  border-width: 15px;
   background-color: #a85a2a;
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 30px;
   margin-bottom: 30;
+  padding: 10px;
 }
 .crew {
   color: #000000;
@@ -239,35 +241,35 @@ button {
 
 /* FOOTER */
 
-footer {
-  background: #a85a2a;
-  height: 40vh;
-  width: 100vw;
+footer,
+#copyright {
+  background: #004968;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding: 20px 5%;
   justify-content: space-between;
-  margin-top: 20%;
 }
-footer ul {
-  padding: 20px;
-}
-
 footer ul li {
   list-style-type: none;
 }
 footer ul li a {
   text-decoration: none;
-  color: #63b0d0;
-  line-height: 3.5;
+  color: white;
+  line-height: 3;
   cursor: pointer;
 }
 footer ul li a:hover {
-  background-color: red;
+  color: #a85a2a;
 }
-footer li a {
-  margin: 20px;
-}
-#section {
-  font-weight: 900;
+h4 {
+  color: #fcead2;
+  font-weight: bold;
   text-decoration: overline;
+}
+#Copyright {
   color: white;
 }
+
+/* FOOTER ENDS */
