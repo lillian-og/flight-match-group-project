@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="Airplane-About/about.css"></linkrel>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+      html{
+        background-color:rgb(247, 219, 168);
+      }
       body {
     background-color:rgb(247, 219, 168);
-    height: fit-content;
+    /* height: fit-content; */
 }
 
 #where {
@@ -166,7 +169,13 @@ button {
         display: inline-block;
         /* width: 20%; */
         flex: auto;
-        background-color: #fcead2;
+        /* border-style: solid; */
+  /* border-width: 10px; */
+  /* border-image: linear-gradient(to bottom right, #63B0D0, #004968, #A85A2A, #E7925D) 1; */
+  background: linear-gradient(#fcead2, #fcead2) padding-box,
+  linear-gradient(to bottom right, #63B0D0, #004968, #A85A2A, #E7925D) border-box;
+  border: 10px solid transparent;
+        /* background-color: ; */
         padding: 20px;
         margin: 40px;
         align-items: center;
@@ -385,9 +394,9 @@ document
             let newDiv = document.createElement("div");
             let titleHOne = document.createElement("h3");
             let airlinePara = document.createElement("p");
-            let img = document.createElement("img");
-            img.src = "./pictures/denver.jpg";
-            img.classList.add("flight-image");
+            // let img = document.createElement("img");
+            // img.src = "./pictures/denver.jpg";
+            // img.classList.add("flight-image");
             // let cityPara = document.createElement("p");
             let idPara = document.createElement("p");
             let milesPara = document.createElement("p");
@@ -438,7 +447,7 @@ document
               newDiv.appendChild(milesPara);
               newDiv.appendChild(timePara);
               newDiv.appendChild(costPara);
-              newDiv.appendChild(img);
+              // newDiv.appendChild(img);
               newDiv.classList.add("flight-info-box");
               // parentDiv.appendChild(newDiv);
               const currentDiv = document.getElementById("flight-finder");
