@@ -158,7 +158,8 @@ app.get('/getLocoInfo/:fromCity/:fromState/:toState/:toCity', async (req, res) =
         const { fromCity, fromState, toCity, toState } = req.params;
         console.log(toCity)
         async function getFrom(city, state) {
-            const url = "https://api.mapbox.com/search/geocode/v6/forward?q=" + city + "%20" + state + "&proximity=ip&access_token=pk.eyJ1IjoiY21hbGNvNzA5IiwiYSI6ImNtMXk3eW0zOTE2YTIybXExdjBlOTdnb3QifQ.NLUWCxQsJmH5c1OBjx3z5g";
+            const url = "https://api.mapbox.com/search/geocode/v6/forward?q=" + city + "%20" + state + "&proximity=ip&access_token=pk.eyJ1IjoiY21hbGNvNzA5IiwiYSI6ImNtYXByaXFxejAxcjcyaW9tdjYwdmY0cGsifQ.8uRBpCZaqnAWbtjuLUACvg
+";
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
